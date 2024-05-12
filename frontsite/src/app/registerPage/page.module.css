@@ -1,0 +1,76 @@
+.header {
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: khaki;
+    font-size: large;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.window {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.mainContainer {
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+
+.subContainer {
+    height: 100%;
+    width: 50%;
+    margin: auto;
+}
+.loginImage {
+    padding: 0;
+    max-height: 100vh;
+}
+
+.loginContainer {
+    width: 80%;
+    height: 90vh;
+    margin: auto;
+    display: table;
+    table-layout: fixed;
+    justify-content: space-evenly;
+}
+
+.inputBox {
+    width: 100%;
+    display: table-row;
+}
+
+.inputTitle {
+    margin-bottom: auto;
+    margin-top: auto;
+    text-align: center;
+    font-size: x-large;
+}
+
+.buttonContainer {
+    display: flex;
+    justify-content: center;
+}
+.button {
+    background-color: khaki;
+    height: 2rem;
+    width: 10rem;
+    margin: 0 auto;
+    justify-self: center;
+    border-radius: 0.5rem;
+}
+
+.input {
+    height: 2rem;
+    width: 100%;
+    padding: 0.5rem;
+    border-style: solid;
+    border-color: black;
+    border-radius: 0.5rem;
+    background-color: khaki;
+
+}
