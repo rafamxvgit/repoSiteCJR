@@ -7,26 +7,37 @@
 
 .mainContainer {
     display: flex;
+    height: 100%;
+    width: 100%;
 }
 
 .subContainer {
-    size: auto;
-    justify-content: center
-}
-
-.loginImage {
-    padding: 0;
-    max-height: 100%;
-    max-width: 50%;
-}
-
-.inputContainer {
-    background-color: red;
-    height: 2rem;
+    height: 100%;
     width: 50%;
     margin: auto;
 }
-.input {
+.loginImage {
+    padding: 0;
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.loginContainer {
+    width: 50%;
     height: 100%;
+    margin: auto
+}
+
+.userNameBox {
+    font-size: small;  
     width: 100%;
+}
+.input {
+    height: 2rem;
+    width: 100%;
+    border-style: solid;
+    border-color: black;
+    border-radius: 0.5rem;
+    background-color: khaki;
+
 }

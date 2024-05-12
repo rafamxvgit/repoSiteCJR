@@ -13,10 +13,15 @@ const loginPage = () => {
         <>
             <body className={styles.window}>
                 <div className={styles.mainContainer}>
-                    <img src="/images/imageDemoLogin.png" className={styles.loginImage}></img>
                     <div className={styles.subContainer}>
-                        <div className={styles.inputContainer} >
-                            <input type="text" onChange={(event) => setText(event.target.value)}/>
+                        <img src="/images/imageDemoLogin.png" className={styles.loginImage}></img>
+                    </div>
+                    <div className={styles.subContainer}>
+                        <div className={styles.loginContainer} >
+                            <div className={styles.userNameBox}>
+                                Nome de usuário:
+                                <input className={styles.input} type="text" onChange={(event) => setText(event.target.value)}/>
+                            </div>
                         </div>
                     </div>
                 </div>
