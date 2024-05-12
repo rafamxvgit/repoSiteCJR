@@ -4,6 +4,7 @@ import React from 'react';
 import Image from 'next/image';
 import styles from './page.module.css';
 import { useState } from 'react';
+import Link from "next/link";
 
 const loginPage = () => {
     
@@ -34,7 +35,7 @@ const loginPage = () => {
                             </div>
                             <div className={styles.buttonsContainer}>
                                 <button className={styles.button} onClick={(event) => console.log("entrar")}>Entrar</button>
-                                <button className={styles.button} onClick={(event) => console.log("cadastrar")}>Cadastrar</button>
+                                <Link href="/registerPage" className={styles.button}>Cadastrar</Link>
                             </div>
                         </div>
                     </div>
