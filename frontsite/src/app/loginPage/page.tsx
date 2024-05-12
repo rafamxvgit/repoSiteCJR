@@ -33,8 +33,8 @@ const loginPage = () => {
                                 <input className={styles.input} type="text" onChange={(event) => console.log("senha")}/>
                             </div>
                             <div className={styles.buttonsContainer}>
-                                <button className={styles.button}>Entrar</button>
-                                <button className={styles.button}>Cadastrar</button>
+                                <button className={styles.button} onClick={(event) => console.log("entrar")}>Entrar</button>
+                                <button className={styles.button} onClick={(event) => console.log("cadastrar")}>Cadastrar</button>
                             </div>
                         </div>
                     </div>
