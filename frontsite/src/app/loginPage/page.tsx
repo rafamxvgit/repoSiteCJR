@@ -10,7 +10,12 @@ const loginPage = () => {
     const [text, setText] = useState("");
 
     return (
-        <>
+        <>  
+            <header className={styles.header}>
+                <div>
+                    <h1>Site de avaliação de professores</h1>
+                </div>
+            </header>
             <body className={styles.window}>
                 <div className={styles.mainContainer}>
                     <div className={styles.subContainer}>
@@ -18,9 +23,18 @@ const loginPage = () => {
                     </div>
                     <div className={styles.subContainer}>
                         <div className={styles.loginContainer} >
-                            <div className={styles.userNameBox}>
+                            <h2 className = {styles.inputTitle}>Login:</h2>
+                            <div className={styles.inputBox}>
                                 Nome de usuário:
-                                <input className={styles.input} type="text" onChange={(event) => setText(event.target.value)}/>
+                                <input className={styles.input} type="text" onChange={(event) => console.log("Nome")}/>
+                            </div>
+                            <div className={styles.inputBox}>
+                                Senha:
+                                <input className={styles.input} type="text" onChange={(event) => console.log("senha")}/>
+                            </div>
+                            <div className={styles.buttonsContainer}>
+                                <button className={styles.button}>Entrar</button>
+                                <button className={styles.button}>Cadastrar</button>
                             </div>
                         </div>
                     </div>

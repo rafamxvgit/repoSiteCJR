@@ -1,3 +1,12 @@
+.header {
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: khaki;
+    font-size: large;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
 .window {
     height: 100%;
     width: 100%;
@@ -18,23 +27,42 @@
 }
 .loginImage {
     padding: 0;
-    max-height: 100%;
-    max-width: 100%;
+    max-height: 100vh;
 }
 
 .loginContainer {
-    width: 50%;
+    width: 80%;
     height: 100%;
     margin: auto
 }
 
-.userNameBox {
+.inputBox {
     font-size: small;  
     width: 100%;
+    margin-bottom: 15vh;
 }
+
+.inputTitle {
+    margin-bottom: 5vh;
+    text-align: center;
+    font-size: x-large;
+}
+
+.buttonsContainer {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.button {
+    padding: 0.5rem;
+    background-color: khaki;
+    border-radius: 0.5rem;
+}
+
 .input {
     height: 2rem;
     width: 100%;
+    padding: 0.5rem;
     border-style: solid;
     border-color: black;
     border-radius: 0.5rem;
