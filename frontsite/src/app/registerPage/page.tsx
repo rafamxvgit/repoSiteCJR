@@ -2,6 +2,7 @@
 
 import React from 'react';
 import styles from './page.module.css';
+import { symlink } from 'fs';
 
 const registerPage = () => {
     return(
@@ -17,25 +18,36 @@ const registerPage = () => {
                         <img src="/images/imageDemoLogin.png" className={styles.loginImage}></img>
                     </div>
                     <div className={styles.subContainer}>
-                        <div className={styles.loginContainer} >
-                            <h2 className = {styles.inputTitle}>Login:</h2>
-                            <div className={styles.inputBox}>
+                        <ul className={styles.loginContainer} >
+                            <li className={styles.inputBox}>
+                                <h2 className={styles.inputTitle}>
+                                    Novo Usuário:
+                                </h2>
+                            </li>
+                            <li className={styles.inputBox}>
                                 Nome de usuário:
                                 <input className={styles.input} type="text" onChange={(event) => console.log("Nome")}/>
-                            </div>
-                            <div className={styles.inputBox}>
+                            </li>
+                            <li className={styles.inputBox}>
+                                Email:
+                                <input className={styles.input} type="text" onChange={(event) => console.log("senha")}/>
+                            </li>
+                            <li className={styles.inputBox}>
                                 Senha:
                                 <input className={styles.input} type="text" onChange={(event) => console.log("senha")}/>
-                            </div>
-                            <div className={styles.inputBox}>
-                                Senha:
+                            </li>
+                            <li className={styles.inputBox}>
+                                Curso:
                                 <input className={styles.input} type="text" onChange={(event) => console.log("senha")}/>
-                            </div>
-                            <div className={styles.inputBox}>
-                                Senha:
+                            </li>
+                            <li className={styles.inputBox}>
+                                Departamento:
                                 <input className={styles.input} type="text" onChange={(event) => console.log("senha")}/>
+                            </li>
+                            <div className={styles.buttonContainer}>
+                                <button className={styles.button} onClick={(event) => console.log("cadastrar")}>Cadastrar</button>
                             </div>
-                        </div>
+                        </ul>
                     </div>
                 </div>
             </body>

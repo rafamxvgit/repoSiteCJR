@@ -32,30 +32,35 @@
 
 .loginContainer {
     width: 80%;
-    height: 100%;
-    margin: auto
+    height: 90vh;
+    margin: auto;
+    display: table;
+    table-layout: fixed;
+    justify-content: space-evenly;
 }
 
 .inputBox {
-    font-size: small;  
     width: 100%;
-    margin-bottom: 15vh;
+    display: table-row;
 }
 
 .inputTitle {
-    margin-bottom: 5vh;
+    margin-bottom: auto;
+    margin-top: auto;
     text-align: center;
     font-size: x-large;
 }
 
-.buttonsContainer {
+.buttonContainer {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
 }
-
 .button {
-    padding: 0.5rem;
     background-color: khaki;
+    height: 2rem;
+    width: 10rem;
+    margin: 0 auto;
+    justify-self: center;
     border-radius: 0.5rem;
 }
 
