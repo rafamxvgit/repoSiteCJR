@@ -1,56 +1,21 @@
-"use client"
-
-import React from 'react';
-import styles from './page.module.css';
-import { symlink } from 'fs';
+import React, { MouseEventHandler } from 'react';
+import Image from 'next/image';
+import Link from "next/link";
 
 const registerPage = () => {
-    return(
+    return (
         <>
-            <header className={styles.header}>
-                <div>
-                    <h1>Site de avaliação de professores</h1>
-                </div>
-            </header>
-            <body className={styles.window}>
-                <div className={styles.mainContainer}>
-                    <div className={styles.subContainer}>
-                        <img src="/images/imageDemoLogin.png" className={styles.loginImage}></img>
+            <main>
+                <div className='flex'>
+                    <div className="w-1/2 h-screen overflow-hidden">
+                        <img src="/images/imageDemoLogin.png" alt="Imagem da tela de Login" />
                     </div>
-                    <div className={styles.subContainer}>
-                        <ul className={styles.loginContainer} >
-                            <li className={styles.inputBox}>
-                                <h2 className={styles.inputTitle}>
-                                    Novo Usuário:
-                                </h2>
-                            </li>
-                            <li className={styles.inputBox}>
-                                Nome de usuário:
-                                <input className={styles.input} type="text" onChange={(event) => console.log("Nome")}/>
-                            </li>
-                            <li className={styles.inputBox}>
-                                Email:
-                                <input className={styles.input} type="text" onChange={(event) => console.log("senha")}/>
-                            </li>
-                            <li className={styles.inputBox}>
-                                Senha:
-                                <input className={styles.input} type="text" onChange={(event) => console.log("senha")}/>
-                            </li>
-                            <li className={styles.inputBox}>
-                                Curso:
-                                <input className={styles.input} type="text" onChange={(event) => console.log("senha")}/>
-                            </li>
-                            <li className={styles.inputBox}>
-                                Departamento:
-                                <input className={styles.input} type="text" onChange={(event) => console.log("senha")}/>
-                            </li>
-                            <div className={styles.buttonContainer}>
-                                <button className={styles.button} onClick={(event) => console.log("cadastrar")}>Cadastrar</button>
-                            </div>
-                        </ul>
+                    <div className="w-1/2 h-screen flex overflow-hidden justify-center">
+                        <div className="w-3/4 h-full flex justify-evenly flex-col gap-2">
+                        </div>
                     </div>
                 </div>
-            </body>
+            </main>
         </>
     )
 }

@@ -1,17 +1,12 @@
-"use client"
-
-import React from 'react';
+import React, { MouseEventHandler } from 'react';
 import Image from 'next/image';
-import styles from './page.module.css';
-import { useState } from 'react';
 import Link from "next/link";
-import TextInpBox from '../components/inputTextBox';
+import ButtInpBoxEnter from '../components/buttonEntrar';
+import UsernameInput from '../components/textBoxUserName';
+import PasswordInput from '../components/textBoxPassword';
+import ButtRegister from '../components/buttonCadastrar';
 
 const loginPage = () => {
-
-    const formatado = "flex flex-col text-red-200"
-    const [text, setText] = useState("");
-
     return (
         <>
             <main>
@@ -21,8 +16,12 @@ const loginPage = () => {
                     </div>
                     <div className="w-1/2 h-screen flex overflow-hidden justify-center">
                         <div className="w-3/4 h-full flex justify-evenly flex-col gap-2">
-                            <TextInpBox texto='nome'></TextInpBox>
-                            <TextInpBox texto='username'></TextInpBox>
+                            <UsernameInput></UsernameInput>
+                            <PasswordInput></PasswordInput>
+                            <div className=' h-10 w-full flex justify-evenly'>
+                                <ButtInpBoxEnter estilo="h-full w-1/3 bg-lime-400 rounded-xl" ></ButtInpBoxEnter>
+                                <ButtRegister estilo="h-full w-1/3 bg-lime-400 rounded-xl" ></ButtRegister>
+                            </div>
                         </div>
                     </div>
                 </div>
