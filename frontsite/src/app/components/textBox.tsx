@@ -6,10 +6,7 @@ interface boxProps {
     type: "text" | "password";
 }
 
-const PersonalizedInput: React.FC<boxProps> = ({
-    placeholder,
-    type,
-}) => {
+const PersonalizedInput: React.FC<boxProps> = ({placeholder, type}) => {
     return(
     <input className="w-full h-10 p-2 bg-lime-400 rounded-lg" type={type} placeholder={placeholder}></input>
     )
