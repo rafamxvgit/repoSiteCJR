@@ -1,13 +1,13 @@
 import React from "react";
 import SearchBoxFeed from "../components/searchBoxFeed";
 import TeacherIcon from "../components/teacherIcon";
-import HeaderDeslogado from "../components/headerDeslogado";
+import HeaderLogado from "../components/headerLogado";
 
-const FeedNoLog = () => {
-
+const FeedLog = () => {
+    
     return(
     <>
-        <HeaderDeslogado></HeaderDeslogado>
+        <HeaderLogado></HeaderLogado>
         <main className="w-screen flex justify-center">
             <div className="w-5/6">
                 
@@ -41,8 +41,9 @@ const FeedNoLog = () => {
                             <div className="h-full w-1/2">
                                 <h2 className="text-3xl w-full h-full text-center content-around">Todos os professores:</h2>
                             </div>
-                            <div className="h-full w-1/2 flex justify-end">
-                                <button className="h-2/5 w-1/2 bg-lime-400 self-center text-2xl rounded-lg">Orndenar:</button>
+                            <div className="h-full w-1/2 flex justify-end gap-4">
+                                <button className="h-2/5 w-1/3 bg-lime-400 self-center text-2xl rounded-lg">Orndenar:</button>
+                                <button className="h-2/5 w-1/3 bg-lime-400 self-center text-2xl rounded-lg">Orndenar:</button>
                             </div>
                         </div>
                         <div className="grid grid-cols-5 h-dvh gap-4">
@@ -74,4 +75,4 @@ const FeedNoLog = () => {
     )
 }
 
-export default FeedNoLog;
+export default FeedLog;
