@@ -1,11 +1,13 @@
 import React from "react";
 import SearchBoxFeed from "../components/searchBoxFeed";
 import TeacherIcon from "../components/teacherIcon";
+import HeaderDeslogado from "../components/headerDeslogado";
 
 const FeedNoLog = () => {
 
     return(
     <>
+        <HeaderDeslogado></HeaderDeslogado>
         <main className="w-screen flex justify-center">
             <div className="w-5/6">
                 
