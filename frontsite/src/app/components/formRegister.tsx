@@ -2,7 +2,7 @@
 
 import { Formik, Form, Field } from "formik";
 import * as yup from "yup";
-
+import axios from "axios";
 interface boxProps {
 
 }
@@ -18,8 +18,9 @@ const FormRegister: React.FC<boxProps> = () => {
         departamento: yup.string().required("Required")
     })
 
-    const submit = (values: any) => {
-        console.log(values);
+    const submit = async (values: any) => {
+        const user = await axios.post('http://localhost:3003/user', values)
+        console.log(user);
     }
 
     return (
