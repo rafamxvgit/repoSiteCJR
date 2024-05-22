@@ -1,11 +1,17 @@
 import React from "react";
-import SearchBoxFeed from "../components/searchBoxFeed";
-import TeacherIcon from "../components/teacherIcon";
-import HeaderDeslogado from "../components/headerDeslogado";
 import axios from "axios";
+import SearchBoxFeed from "@/app/components/searchBoxFeed";
+import TeacherIcon from "@/app/components/teacherIcon";
+import HeaderLogado from "@/app/components/headerLogado";
 
 
 const todosProfessores = [{id:4, nome:"batata", foto:"/images/sad.png"},{id:5, nome:"joão", foto:"/images/sad.png"},{id:6, nome:"mais", foto:"/images/sad.png"}];
+
+const getTeachers = () => {
+    const professores = axios.get('http://localhost:xxxx/teacher');
+    console.log(professores);
+    //!falta formatar a variável 'professores' para adequa-la à interface TeacherObject
+}
 
 //essa interfaçe define as propriedade de um objeto professor
 interface TeacherObject {
@@ -14,21 +20,14 @@ interface TeacherObject {
     foto: string
 }
 
-//essa função cria um card de professor
-const CreateTeacherCard = (obj: TeacherObject, estilo: string) => {
-    return(<TeacherIcon id={obj.id} estilo={estilo} nome={obj.nome} foto={obj.foto}/>);
+const FeedLog = ({ params }: {params: { userID: number}}) => {
+    //essa função cria um card de professor
+    const CreateTeacherCard = (obj: TeacherObject, estilo: string) => {
+        return(<TeacherIcon estilo={estilo} teacherID={obj.id} nome={obj.nome} foto={obj.foto}/>);
 }
-
-const getTeachers = () => {
-    const professores = axios.get('http://localhost:xxxx/teacher');
-    console.log(professores);
-    //!falta formatar a variável 'professores' para adequa-la à interface TeacherObject
-}
-
-const FeedNoLog = () => {
     return(
     <>
-        <HeaderDeslogado></HeaderDeslogado> 
+        <HeaderLogado/>
         <main className="w-screen h-full flex justify-center">
             <div className="w-5/6">
                 
@@ -61,8 +60,9 @@ const FeedNoLog = () => {
                         </div>
                     </div>
                     <div className="w-1/2 h-full flex">
-                        <div className="h-2/5 w-full self-center flex justify-end">
-                            <button className="w-1/2 bg-lime-400 rounded-lg text-2xl">Ordenar</button>
+                        <div className="h-2/5 w-full self-center flex justify-end gap-6">
+                            <button className="w-1/3 bg-lime-400 rounded-lg text-2xl">Ordenar</button>
+                            <button className="w-1/3 bg-lime-400 rounded-lg text-2xl">Ordenar</button>
                         </div>
                     </div>
                 </div>
@@ -79,4 +79,4 @@ const FeedNoLog = () => {
     )
 }
 
-export default FeedNoLog;
+export default FeedLog;

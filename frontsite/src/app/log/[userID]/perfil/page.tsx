@@ -1,9 +1,9 @@
 import React from "react";
-import HeaderDeslogado from "../components/headerDeslogado";
-import Comentario from "../components/comentario";
-import UserInfo from "../components/userInfo";
+import HeaderDeslogado from "@/app/components/headerDeslogado";
+import Comentario from "@/app/components/comentario";
+import UserInfo from "@/app/components/userInfo";
 
-const Perfil = () => {
+const Perfil = ({ params }: {params: { userID: string}}) => {
   return (
     <>
       <HeaderDeslogado />

@@ -1,5 +1,5 @@
 import React, { MouseEventHandler } from 'react';
-import FormRegister from '../components/formRegister';
+import FormRegister from '@/app/components/formRegister';
 
 const handleSubmit = (values: any) => {
     console.log(values)

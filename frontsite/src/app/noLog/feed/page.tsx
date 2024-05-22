@@ -1,7 +1,7 @@
 import React from "react";
-import SearchBoxFeed from "../components/searchBoxFeed";
-import TeacherIcon from "../components/teacherIcon";
-import HeaderLogado from "../components/headerLogado";
+import SearchBoxFeed from "@/app/components/searchBoxFeed";
+import TeacherIcon from "@/app/components/teacherIcon";
+import HeaderDeslogado from "@/app/components/headerDeslogado";
 import axios from "axios";
 
 
@@ -16,7 +16,7 @@ interface TeacherObject {
 
 //essa função cria um card de professor
 const CreateTeacherCard = (obj: TeacherObject, estilo: string) => {
-    return(<TeacherIcon id={obj.id} estilo={estilo} nome={obj.nome} foto={obj.foto}/>);
+    return(<TeacherIcon teacherID={obj.id} estilo={estilo} nome={obj.nome} foto={obj.foto}/>);
 }
 
 const getTeachers = () => {
@@ -25,10 +25,10 @@ const getTeachers = () => {
     //!falta formatar a variável 'professores' para adequa-la à interface TeacherObject
 }
 
-const FeedLog = () => {
+const FeedNoLog = () => {
     return(
     <>
-        <HeaderLogado/>
+        <HeaderDeslogado></HeaderDeslogado> 
         <main className="w-screen h-full flex justify-center">
             <div className="w-5/6">
                 
@@ -61,9 +61,8 @@ const FeedLog = () => {
                         </div>
                     </div>
                     <div className="w-1/2 h-full flex">
-                        <div className="h-2/5 w-full self-center flex justify-end gap-6">
-                            <button className="w-1/3 bg-lime-400 rounded-lg text-2xl">Ordenar</button>
-                            <button className="w-1/3 bg-lime-400 rounded-lg text-2xl">Ordenar</button>
+                        <div className="h-2/5 w-full self-center flex justify-end">
+                            <button className="w-1/2 bg-lime-400 rounded-lg text-2xl">Ordenar</button>
                         </div>
                     </div>
                 </div>
@@ -80,4 +79,4 @@ const FeedLog = () => {
     )
 }
 
-export default FeedLog;
+export default FeedNoLog;
