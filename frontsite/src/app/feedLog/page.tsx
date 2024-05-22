@@ -2,73 +2,78 @@ import React from "react";
 import SearchBoxFeed from "../components/searchBoxFeed";
 import TeacherIcon from "../components/teacherIcon";
 import HeaderLogado from "../components/headerLogado";
+import axios from "axios";
+
+
+const todosProfessores = [{id:4, nome:"batata", foto:"/images/sad.png"},{id:5, nome:"joão", foto:"/images/sad.png"},{id:6, nome:"mais", foto:"/images/sad.png"}];
+
+//essa interfaçe define as propriedade de um objeto professor
+interface TeacherObject {
+    id: number,
+    nome: string,
+    foto: string
+}
+
+//essa função cria um card de professor
+const CreateTeacherCard = (obj: TeacherObject, estilo: string) => {
+    return(<TeacherIcon id={obj.id} estilo={estilo} nome={obj.nome} foto={obj.foto}/>);
+}
+
+const getTeachers = () => {
+    const professores = axios.get('http://localhost:xxxx/teacher');
+    console.log(professores);
+    //!falta formatar a variável 'professores' para adequa-la à interface TeacherObject
+}
 
 const FeedLog = () => {
-    
     return(
     <>
-        <HeaderLogado></HeaderLogado>
-        <main className="w-screen flex justify-center">
+        <HeaderLogado/>
+        <main className="w-screen h-full flex justify-center">
             <div className="w-5/6">
                 
+                {/*barra de pesquisa com o título "Novos professores"*/}
                 <div className="w-full h-1/6 flex">
-                    <div className="w-1/2 h-full ">
-                        <h2 className="h-full w-full text-3xl text-center content-around">Novos Professores:</h2>
+                    <div className="w-1/2 h-full flex flex-col justify-center">
+                        <div className="h-2/5 w-full">
+                            <h2 className="h-full w-full text-3xl content-end">Novos Professores:</h2>
+                        </div>
                     </div>
-
                     <div className="w-1/2 h-full flex">
-                        <div className="h-1/2 w-full self-center flex justify-end">
+                        <div className="h-2/5 w-full self-center flex justify-end">
                             <SearchBoxFeed aparencia="w-2/3 h-full bg-lime-300 rounded-lg p-3"></SearchBoxFeed>
                         </div>
                     </div>
                 </div>
 
-                <div className="w-full h-dvh">
-                    <section className="w-full h-1/2 flex gap-6 p-6 overflow-scroll">
-                        <TeacherIcon nome="Bach" foto="/images/sad.png"/>
-                        <TeacherIcon nome="Bach" foto="/images/sad.png"/>
-                        <TeacherIcon nome="Bach" foto="/images/sad.png"/>
-                        <TeacherIcon nome="Bach" foto="/images/sad.png"/>
-                        <TeacherIcon nome="Bach" foto="/images/sad.png"/>
-                        <TeacherIcon nome="Bach" foto="/images/sad.png"/>
-                        <TeacherIcon nome="Bach" foto="/images/sad.png"/>
-                        <TeacherIcon nome="Bach" foto="/images/sad.png"/>
-                        
-                    </section>
-                    <div className="h-0.5 w-full bg-black"></div>
-                    <section className="w-full h-dvh">
-                        <div className="w-full h-1/6 flex">
-                            <div className="h-full w-1/2">
-                                <h2 className="text-3xl w-full h-full text-center content-around">Todos os professores:</h2>
-                            </div>
-                            <div className="h-full w-1/2 flex justify-end gap-4">
-                                <button className="h-2/5 w-1/3 bg-lime-400 self-center text-2xl rounded-lg">Orndenar:</button>
-                                <button className="h-2/5 w-1/3 bg-lime-400 self-center text-2xl rounded-lg">Orndenar:</button>
-                            </div>
+                {/*seção de novos professores*/}
+                <section className="w-full h-1/4 flex gap-6 overflow-scroll my-3">
+                    {todosProfessores.map(professor => {return CreateTeacherCard(professor, "h-full aspect-square bg-lime-400 rounded-lg p-3")})}
+                </section>
+
+                <div className="h-0.5 w-full bg-black"></div>
+                
+                {/*botão ordenar e título "Novos professores"*/}
+                <div className="w-full h-1/6 flex">
+                    <div className="w-1/2 h-full flex flex-col justify-center">
+                        <div className="h-2/5 w-full">
+                            <h2 className="h-full w-full text-3xl content-end">Todos os Professores:</h2>
                         </div>
-                        <div className="grid grid-cols-5 h-dvh gap-4">
-                            <TeacherIcon nome="Bach" foto="/images/sad.png"/>
-                            <TeacherIcon nome="Bach" foto="/images/sad.png"/>
-                            <TeacherIcon nome="Bach" foto="/images/sad.png"/>
-                            <TeacherIcon nome="Bach" foto="/images/sad.png"/>
-                            <TeacherIcon nome="Bach" foto="/images/sad.png"/>
-                            <TeacherIcon nome="Bach" foto="/images/sad.png"/>
-                            <TeacherIcon nome="Bach" foto="/images/sad.png"/>
-                            <TeacherIcon nome="Bach" foto="/images/sad.png"/>
-                            <TeacherIcon nome="Bach" foto="/images/sad.png"/>
-                            <TeacherIcon nome="Bach" foto="/images/sad.png"/>
-                            <TeacherIcon nome="Bach" foto="/images/sad.png"/>
-                            <TeacherIcon nome="Bach" foto="/images/sad.png"/>
-                            <TeacherIcon nome="Bach" foto="/images/sad.png"/>
-                            <TeacherIcon nome="Bach" foto="/images/sad.png"/>
-                            <TeacherIcon nome="Bach" foto="/images/sad.png"/>
-                            <TeacherIcon nome="Bach" foto="/images/sad.png"/>
-                            <TeacherIcon nome="Bach" foto="/images/sad.png"/>
-                            <TeacherIcon nome="Bach" foto="/images/sad.png"/>
+                    </div>
+                    <div className="w-1/2 h-full flex">
+                        <div className="h-2/5 w-full self-center flex justify-end gap-6">
+                            <button className="w-1/3 bg-lime-400 rounded-lg text-2xl">Ordenar</button>
+                            <button className="w-1/3 bg-lime-400 rounded-lg text-2xl">Ordenar</button>
                         </div>
-                    </section>
+                    </div>
                 </div>
 
+                {/*seção todos os professores*/}
+                <section className="w-full h-dvh">
+                    <div className="grid grid-cols-4 h-dvh gap-4">
+                        {todosProfessores.map(professor => {return CreateTeacherCard(professor, "w-full aspect-square bg-lime-400 rounded-lg p-3")})}
+                    </div>
+                </section>
             </div>
         </main>
     </>

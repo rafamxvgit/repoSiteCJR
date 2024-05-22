@@ -16,7 +16,7 @@ interface TeacherObject {
 
 //essa função cria um card de professor
 const CreateTeacherCard = (obj: TeacherObject, estilo: string) => {
-    return(<TeacherIcon estilo={estilo} nome={obj.nome} foto={obj.foto}/>);
+    return(<TeacherIcon id={obj.id} estilo={estilo} nome={obj.nome} foto={obj.foto}/>);
 }
 
 const getTeachers = () => {
