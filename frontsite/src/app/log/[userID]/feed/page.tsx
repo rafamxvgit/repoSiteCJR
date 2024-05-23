@@ -60,9 +60,8 @@ const FeedLog = ({ params }: {params: { userID: number}}) => {
                         </div>
                     </div>
                     <div className="w-1/2 h-full flex">
-                        <div className="h-2/5 w-full self-center flex justify-end gap-6">
-                            <button className="w-1/3 bg-lime-400 rounded-lg text-2xl">Ordenar</button>
-                            <button className="w-1/3 bg-lime-400 rounded-lg text-2xl">Ordenar</button>
+                        <div className="h-2/5 w-full self-center flex justify-end">
+                            <button className="w-1/2 bg-lime-400 rounded-lg text-2xl">Ordenar</button>
                         </div>
                     </div>
                 </div>
