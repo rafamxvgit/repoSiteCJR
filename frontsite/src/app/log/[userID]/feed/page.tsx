@@ -9,8 +9,7 @@ let todosProfessores : TeacherObject[] = [{id: 0, nome: "", email: "", senha: ""
 
 const getTeachers = () => {
     const professores = axios.get('http://localhost:3005/professor');
-    professores.then(response => {todosProfessores = response.data}).catch(err => {console.log(err)})
-    console.log(todosProfessores);
+    professores.then(response => {todosProfessores = response.data})
     //!falta formatar a variável 'professores' para adequa-la à interface TeacherObject
 }
 
