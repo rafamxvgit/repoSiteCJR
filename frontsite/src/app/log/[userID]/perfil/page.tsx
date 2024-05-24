@@ -12,8 +12,8 @@ interface Comentario {
 }
 
 //! variáveis temporárias
-let coments = [{autor: 'fernando', professor: 'maurício', data: '11/12/2023', conteudo: 'a aula foi boa', imagem: '/images/sad.png'},{autor: 'fernando', professor: 'marcio', data: '11/12/2023', conteudo: 'a aula foi ruim', imagem: '/images/sad.png'}]
-let autor = {nome: 'rafael', email:'rafaelmonteiroximenes@gmail.com', departamento: 'exatas', curso: 'ciência da computação'}
+let coments: Comentario[] = []
+let autor = {nome: '', email:'', departamento: '', curso: ''}
 
 const CriarComentario = (obj: Comentario) => {
   return <Comentario autor={obj.autor} professor={obj.professor} data={obj.data} conteudo={obj.conteudo} imagem={obj.imagem}/>
