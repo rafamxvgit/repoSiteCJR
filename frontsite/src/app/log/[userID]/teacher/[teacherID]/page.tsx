@@ -31,7 +31,7 @@ const getTeacher = (id: string) => {
 
 const getComentarios = (id: string) => {
     const comentarios = axios.get(`http://localhost:3005/post/alvo${id}`)
-    comentarios.then(response => {comments = [response.data]})
+    comentarios.then(response => {comments = response.data})
 }
 
 const CriarComentario = (obj: Comentario) => {
