@@ -6,7 +6,7 @@ import CampoAvaliacao from "@/app/components/avalProf";
 
 
 let teacher: Teacher = {id:0, nome: '', email: '', senha: '', curso: '', departamento: '', foto: '', }
-let comments: Comentario[] = [{id: 1, idAutor: 1, idAlvo: 1, data: '20/04/2023', conteudo: 'legal a aula'}]
+let comments: Comentario[] = []
 
 interface Teacher {
     id: number
@@ -36,7 +36,7 @@ const getComentarios = (id: string) => {
 }
 
 const CriarComentario = (obj: Comentario) => {
-    return <Comentario autor={obj.idAutor+""} professor={obj.idAlvo+""} data={obj.data} conteudo={obj.conteudo} imagem="/images/sad.png"/>
+    return <Comentario autor={obj.idAutor+""} professor={obj.idAlvo+""} data={obj.data} conteudo={obj.conteudo} imagem="/images/LogoUnB.svg"/>
 }
   
 
@@ -76,9 +76,7 @@ const LogTeacherPage = ({ params }: {params: {userID: string, teacherID: string}
                 <div className="h-1 bg-black"/>
 
                 {/*fazer um comentário*/}
-                {params.userID}
                 <CampoAvaliacao idAutor={params.userID} idAlvo={params.teacherID}/>
-                {params.teacherID}
                 <div className="h-1 bg-black mb-2"/>
 
                 {/*comentários sobre o professor*/}

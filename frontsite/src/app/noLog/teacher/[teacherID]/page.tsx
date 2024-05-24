@@ -34,7 +34,7 @@ const getComentarios = (id: string) => {
 }
 
 const CriarComentario = (obj: Comentario) => {
-    return <Comentario autor={obj.idAutor+""} professor={obj.idAlvo+""} data={obj.data} conteudo={obj.conteudo} imagem="/images/sad.png"/>
+    return <Comentario autor={obj.idAutor+""} professor={obj.idAlvo+""} data={obj.data} conteudo={obj.conteudo} imagem="/images/LogoUnB.svg"/>
 }
   
 
@@ -80,8 +80,6 @@ const NoLogTeacherPage = ({ params }: {params: {teacherID: string}}) => {
 
                 <div className="h-1 bg-black mb-2"/>
 
-                {/*fazer um comentário*/}
-                {params.teacherID}
             </div>
         </main>
     </>
