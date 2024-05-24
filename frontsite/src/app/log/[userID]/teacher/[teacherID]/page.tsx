@@ -4,6 +4,7 @@ import HeaderLogado from "@/app/components/headerLogado";
 import Comentario from "@/app/components/comentario";
 import CampoAvaliacao from "@/app/components/avalProf";
 
+
 let teacher: Teacher = {id:0, nome: '', email: '', senha: '', curso: '', departamento: '', foto: '', }
 let comments: Comentario[] = [{id: 1, idAutor: 1, idAlvo: 1, data: '20/04/2023', conteudo: 'legal a aula'}]
 
@@ -39,7 +40,7 @@ const CriarComentario = (obj: Comentario) => {
 }
   
 
-const LogTeacherPage = ({ params }: {params: {teacherID: string}}) => {
+const LogTeacherPage = ({ params }: {params: {userID: string, teacherID: string}}) => {
     
     getComentarios(params.teacherID)
     getTeacher(params.teacherID)
@@ -71,19 +72,21 @@ const LogTeacherPage = ({ params }: {params: {teacherID: string}}) => {
                     </div>
                     
                 </section>
-
+                
                 <div className="h-1 bg-black"/>
+
+                {/*fazer um comentário*/}
+                {params.userID}
+                <CampoAvaliacao idAutor={params.userID} idAlvo={params.teacherID}/>
+                {params.teacherID}
+                <div className="h-1 bg-black mb-2"/>
 
                 {/*comentários sobre o professor*/}
                 <section className="flex flex-col gap-6 my-2">
                     {comments.map(CriarComentario)}
                 </section>
 
-                <div className="h-1 bg-black mb-2"/>
 
-                {/*fazer um comentário*/}
-                <CampoAvaliacao/>
-                {params.teacherID}
             </div>
         </main>
     </>
