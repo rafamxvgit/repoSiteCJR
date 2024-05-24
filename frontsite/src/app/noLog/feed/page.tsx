@@ -5,11 +5,11 @@ import TeacherIcon from "@/app/components/teacherIcon";
 import HeaderDeslogado from "@/app/components/headerDeslogado";
 
 
-const todosProfessores = [{id:4, nome:"batata", foto:"/images/sad.png"},{id:5, nome:"joão", foto:"/images/sad.png"},{id:6, nome:"mais", foto:"/images/sad.png"},{id:4, nome:"batata", foto:"/images/sad.png"},{id:5, nome:"joão", foto:"/images/sad.png"},{id:6, nome:"mais", foto:"/images/sad.png"}];
+let todosProfessores : TeacherObject[] = [{id: 0, nome: "", email: "", senha: "", curso: "", departamento: "", foto: ""}];
 
 const getTeachers = () => {
-    const professores = axios.get('http://localhost:xxxx/teacher');
-    console.log(professores);
+    const professores = axios.get('http://localhost:3005/professor');
+    professores.then(response => {todosProfessores = response.data})
     //!falta formatar a variável 'professores' para adequa-la à interface TeacherObject
 }
 
@@ -17,6 +17,10 @@ const getTeachers = () => {
 interface TeacherObject {
     id: number,
     nome: string,
+    email: string
+    senha: string
+    curso: string
+    departamento: string
     foto: string
 }
 
@@ -25,7 +29,9 @@ const FeedNoLog = ({ params }: {params: { userID: number}}) => {
     //essa função cria um card de professor
     const CreateTeacherCard = (obj: TeacherObject, estilo: string) => {
         return(<TeacherIcon estilo={estilo} teacherID={obj.id} nome={obj.nome} foto={obj.foto}/>);
-}
+    }
+
+    getTeachers();
     return(
     <>
         <HeaderDeslogado/>
