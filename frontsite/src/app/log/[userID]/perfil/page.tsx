@@ -12,18 +12,27 @@ interface Comentario {
 }
 
 //! variáveis temporárias
-const comentarios = [{autor: 'fernando', professor: 'maurício', data: '11/12/2023', conteudo: 'a aula foi boa', imagem: '/images/sad.png'},{autor: 'fernando', professor: 'marcio', data: '11/12/2023', conteudo: 'a aula foi ruim', imagem: '/images/sad.png'}]
-const autor = {nome: 'rafael', email:'rafaelmonteiroximenes@gmail.com', departamento: 'exatas', curso: 'ciência da computação'}
+let coments = [{autor: 'fernando', professor: 'maurício', data: '11/12/2023', conteudo: 'a aula foi boa', imagem: '/images/sad.png'},{autor: 'fernando', professor: 'marcio', data: '11/12/2023', conteudo: 'a aula foi ruim', imagem: '/images/sad.png'}]
+let autor = {nome: 'rafael', email:'rafaelmonteiroximenes@gmail.com', departamento: 'exatas', curso: 'ciência da computação'}
 
 const CriarComentario = (obj: Comentario) => {
   return <Comentario autor={obj.autor} professor={obj.professor} data={obj.data} conteudo={obj.conteudo} imagem={obj.imagem}/>
 }
 
+const getComentarios = (id: string) => {
+  const comentarios = axios.get(`http://localhost:3005/post/autor${id}`)
+  comentarios.then(response => {coments = response.data})
+}
+
+const getUser = (id: string) => {
+  const auth = axios.get(`http://localhost:3005/user/${id}`)
+  auth.then(response => {autor = response.data})
+}
+
 const Perfil = ({ params }: {params: { userID: string}}) => {
   
-  //const comments = axios.get('http://localhost:xxxx/comentarios/<id do autor>')
-  //const autor = axios.get('http://localhost:xxxx/user/<id do usuário>')
-
+  getComentarios(params.userID)
+  getUser(params.userID)
   return (
     <>
       <HeaderLogado/>
@@ -69,7 +78,7 @@ const Perfil = ({ params }: {params: { userID: string}}) => {
 
           {/*os posts*/}
           <section className="h-full flex flex-col gap-12">
-            {comentarios.map(CriarComentario)}
+            {coments.map(CriarComentario)}
           </section>
 
         </div>
