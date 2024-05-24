@@ -3,25 +3,45 @@ import axios from "axios";
 import HeaderDeslogado from "@/app/components/headerDeslogado";
 import Comentario from "@/app/components/comentario";
 
-const teacher = {nome: 'fernando', email: 'batata@gmail.com', curso: 'matemática', imagem: '/images/sad.png'}
-const comments = [{autor: 'rafael', professor: 'fernando', imagem: '/images/sad.png', conteudo: 'legal a aula', data: '20/04/2023'},{autor: 'rafael', professor: 'fernando', imagem: '/images/sad.png', conteudo: 'legal a aula', data: '20/04/2023'},{autor: 'rafael', professor: 'fernando', imagem: '/images/sad.png', conteudo: 'legal a aula', data: '20/04/2023'}]
+let teacher: Teacher = {id:0, nome: '', email: '', senha: '', curso: '', departamento: '', foto: '', }
+let comments: Comentario[] = [{id: 1, idAutor: 1, idAlvo: 1, data: '20/04/2023', conteudo: 'legal a aula'}]
 
+interface Teacher {
+    id: number
+    nome: string,
+    email: string,
+    senha: string,
+    curso: string,
+    foto: string,
+    departamento: string
+}
 interface Comentario {
-    autor: string,
-    professor: string
+    id: number
+    idAutor: number,
+    idAlvo: number,
     data: string
     conteudo: string
-    imagem: string
-  }
-  
+}
+
+const getTeacher = (id: string) => {
+    const professor = axios.get(`http://localhost:3005/professor/${id}`)
+    professor.then(response => {teacher = response.data})
+}
+
+const getComentarios = (id: string) => {
+    const comentarios = axios.get(`http://localhost:3005/post/alvo${id}`)
+    comentarios.then(response => {comments = response.data})
+}
+
 const CriarComentario = (obj: Comentario) => {
-    return <Comentario autor={obj.autor} professor={obj.professor} data={obj.data} conteudo={obj.conteudo} imagem={obj.imagem}/>
+    return <Comentario autor={obj.idAutor+""} professor={obj.idAlvo+""} data={obj.data} conteudo={obj.conteudo} imagem="/images/sad.png"/>
 }
   
 
 const NoLogTeacherPage = ({ params }: {params: {teacherID: string}}) => {
-    //const teacher = axios.get('http://localhost:xxxx/teacher/<id do professor>')
-    //!descobrir como eu vou pegar os comentários dos professores
+    
+    getComentarios(params.teacherID)
+    getTeacher(params.teacherID)
     return(
     <>
         <HeaderDeslogado/>
@@ -34,7 +54,7 @@ const NoLogTeacherPage = ({ params }: {params: {teacherID: string}}) => {
 
                     <div className="h-1/4 flex bg-lime-500">
                         <div className="w-32"></div>
-                        <img src="/images/sad.png" alt="imagem perfil" className="h-48 rounded-full border-lime-950 border-2"/>
+                        <img src={teacher.foto} alt="imagem perfil" className="h-48 rounded-full border-lime-950 border-2 aspect-square"/>
                     </div>
                     
                     <div className="h-1/2 flex content-around">
@@ -51,12 +71,16 @@ const NoLogTeacherPage = ({ params }: {params: {teacherID: string}}) => {
                     
                 </section>
 
-                <div className="h-1 bg-black mb-2"/>
+                <div className="h-1 bg-black"/>
 
                 {/*comentários sobre o professor*/}
-                <section className="flex flex-col gap-6">
+                <section className="flex flex-col gap-6 my-2">
                     {comments.map(CriarComentario)}
                 </section>
+
+                <div className="h-1 bg-black mb-2"/>
+
+                {/*fazer um comentário*/}
                 {params.teacherID}
             </div>
         </main>
