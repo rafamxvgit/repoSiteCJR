@@ -4,35 +4,41 @@ import Comentario from "@/app/components/comentario";
 import HeaderLogado from "@/app/components/headerLogado";
 
 interface Comentario {
-  autor: string,
-  professor: string
+  idAutor: string,
+  idAlvo: string
   data: string
   conteudo: string
   imagem: string
 }
 
-//! variáveis temporárias
-let coments: Comentario[] = []
-let autor = {nome: '', email:'', departamento: '', curso: ''}
+interface Autor {
+  nome: string
+  email: string
+  departamento: string
+  curso: string
+}
+
+let coments: Comentario[];
+let autor: Autor;
 
 const CriarComentario = (obj: Comentario) => {
-  return <Comentario autor={obj.autor} professor={obj.professor} data={obj.data} conteudo={obj.conteudo} imagem={obj.imagem}/>
+  return <Comentario autor={obj.idAutor} professor={obj.idAlvo} data={obj.data} conteudo={obj.conteudo} imagem={obj.imagem}/>
 }
 
-const getComentarios = (id: string) => {
-  const comentarios = axios.get(`http://localhost:3005/post/autor${id}`)
-  comentarios.then(response => {coments = response.data})
+const getComentarios = async (id: string) => {
+  const comentarios = await axios.get(`http://localhost:3005/post/autor${id}`);
+  coments = comentarios.data;
 }
 
-const getUser = (id: string) => {
-  const auth = axios.get(`http://localhost:3005/user/${id}`)
-  auth.then(response => {autor = response.data})
+const getUser = async (id: string) => {
+  const auth = await axios.get(`http://localhost:3005/user/${id}`);
+  autor = auth.data;
 }
 
-const Perfil = ({ params }: {params: { userID: string}}) => {
-  
-  getComentarios(params.userID)
-  getUser(params.userID)
+const Perfil = async ({ params }: {params: { userID: string}}) => { 
+  await getComentarios(params.userID)
+  await getUser(params.userID)
+
   return (
     <>
       <HeaderLogado/>

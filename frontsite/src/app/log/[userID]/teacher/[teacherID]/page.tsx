@@ -25,14 +25,14 @@ interface Comentario {
     conteudo: string
 }
 
-const getTeacher = (id: string) => {
-    const professor = axios.get(`http://localhost:3005/professor/${id}`)
-    professor.then(response => {teacher = response.data})
+const getTeacher = async (id: string) => {
+    const professor = await axios.get(`http://localhost:3005/professor/${id}`);
+    teacher = professor.data;
 }
 
-const getComentarios = (id: string) => {
-    const comentarios = axios.get(`http://localhost:3005/post/alvo${id}`)
-    comentarios.then(response => {comments = response.data})
+const getComentarios = async (id: string) => {
+    const comentarios = await axios.get(`http://localhost:3005/post/alvo${id}`);
+    comments = comentarios.data;
 }
 
 const CriarComentario = (obj: Comentario) => {
@@ -40,10 +40,10 @@ const CriarComentario = (obj: Comentario) => {
 }
   
 
-const LogTeacherPage = ({ params }: {params: {userID: string, teacherID: string}}) => {
+const LogTeacherPage = async ({ params }: {params: {userID: string, teacherID: string}}) => {
     
-    getComentarios(params.teacherID)
-    getTeacher(params.teacherID)
+    await getComentarios(params.teacherID)
+    await getTeacher(params.teacherID)
     return(
     <>
         <HeaderLogado/>

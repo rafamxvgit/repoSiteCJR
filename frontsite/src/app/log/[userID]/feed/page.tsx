@@ -4,15 +4,6 @@ import SearchBoxFeed from "@/app/components/searchBoxFeed";
 import TeacherIcon from "@/app/components/teacherIcon";
 import HeaderLogado from "@/app/components/headerLogado";
 
-
-let todosProfessores : TeacherObject[] = [{id: 0, nome: "", email: "", senha: "", curso: "", departamento: "", foto: ""}];
-
-const getTeachers = () => {
-    const professores = axios.get('http://localhost:3005/professor');
-    professores.then(response => {todosProfessores = response.data})
-    //!falta formatar a variável 'professores' para adequa-la à interface TeacherObject
-}
-
 //essa interfaçe define as propriedade de um objeto professor
 interface TeacherObject {
     id: number,
@@ -24,14 +15,20 @@ interface TeacherObject {
     foto: string
 }
 
+let todosProfessores : TeacherObject[];
 
-const FeedLog = ({ params }: {params: { userID: number}}) => {
-    //essa função cria um card de professor
-    const CreateTeacherCard = (obj: TeacherObject, estilo: string) => {
-        return(<TeacherIcon estilo={estilo} teacherID={obj.id} nome={obj.nome} foto={obj.foto}/>);
-    }
+const getTeachers = async () => {
+    const professores = await axios.get('http://localhost:3005/professor');
+    todosProfessores = professores.data;
+}
 
-    getTeachers();
+//essa função cria um card de professor
+const CreateTeacherCard = (obj: TeacherObject, estilo: string) => {
+    return(<TeacherIcon estilo={estilo} teacherID={obj.id} nome={obj.nome} foto={obj.foto}/>);
+}
+
+const FeedLog = async ({ params }: {params: { userID: number}}) => {
+    await getTeachers();
     return(
     <>
         <HeaderLogado/>
@@ -59,7 +56,7 @@ const FeedLog = ({ params }: {params: { userID: number}}) => {
 
                 <div className="h-0.5 w-full bg-black"></div>
                 
-                {/*botão ordenar e título "Novos professores"*/}
+                {/*botão ordenar e título "todos os Professores"*/}
                 <div className="w-full h-32 flex">
                     <div className="w-1/2 h-full flex flex-col justify-center">
                         <div className="h-2/5 w-full">

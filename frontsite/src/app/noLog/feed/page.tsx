@@ -1,17 +1,7 @@
-import React from "react";
 import axios from "axios";
 import SearchBoxFeed from "@/app/components/searchBoxFeed";
 import TeacherIcon from "@/app/components/teacherIcon";
 import HeaderDeslogado from "@/app/components/headerDeslogado";
-
-
-let todosProfessores : TeacherObject[] = [{id: 0, nome: "", email: "", senha: "", curso: "", departamento: "", foto: ""}];
-
-const getTeachers = () => {
-    const professores = axios.get('http://localhost:3005/professor');
-    professores.then(response => {todosProfessores = response.data})
-    //!falta formatar a variável 'professores' para adequa-la à interface TeacherObject
-}
 
 //essa interfaçe define as propriedade de um objeto professor
 interface TeacherObject {
@@ -24,14 +14,22 @@ interface TeacherObject {
     foto: string
 }
 
+let todosProfessores : TeacherObject[];
 
-const FeedNoLog = ({ params }: {params: { userID: number}}) => {
-    //essa função cria um card de professor
+const getProf = async () => {
+    const professores = await axios.get('http://localhost:3005/professor');
+    todosProfessores = professores.data
+    //professores.then(response => {todosProfessores = response.data})
+}
+
+//essa função cria um card de professor
     const CreateTeacherCard = (obj: TeacherObject, estilo: string) => {
         return(<TeacherIcon estilo={estilo} teacherID={obj.id} nome={obj.nome} foto={obj.foto}/>);
     }
 
-    getTeachers();
+
+const FeedNoLog = async () => {
+    await getProf();
     return(
     <>
         <HeaderDeslogado/>

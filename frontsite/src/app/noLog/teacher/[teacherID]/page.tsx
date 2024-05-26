@@ -3,9 +3,6 @@ import axios from "axios";
 import HeaderDeslogado from "@/app/components/headerDeslogado";
 import Comentario from "@/app/components/comentario";
 
-let teacher: Teacher = {id:0, nome: '', email: '', senha: '', curso: '', departamento: '', foto: '', }
-let comments: Comentario[] = [{id: 1, idAutor: 1, idAlvo: 1, data: '20/04/2023', conteudo: 'legal a aula'}]
-
 interface Teacher {
     id: number
     nome: string,
@@ -23,14 +20,17 @@ interface Comentario {
     conteudo: string
 }
 
-const getTeacher = (id: string) => {
-    const professor = axios.get(`http://localhost:3005/professor/${id}`)
-    professor.then(response => {teacher = response.data})
+let teacher: Teacher;
+let comments: Comentario[]; 
+
+const getTeacher = async (id: string) => {
+    const professor = await axios.get(`http://localhost:3005/professor/${id}`)
+    teacher = professor.data;
 }
 
-const getComentarios = (id: string) => {
-    const comentarios = axios.get(`http://localhost:3005/post/alvo${id}`)
-    comentarios.then(response => {comments = response.data})
+const getComentarios = async (id: string) => {
+    const comentarios = await axios.get(`http://localhost:3005/post/alvo${id}`);
+    comments = comentarios.data;
 }
 
 const CriarComentario = (obj: Comentario) => {
@@ -38,10 +38,10 @@ const CriarComentario = (obj: Comentario) => {
 }
   
 
-const NoLogTeacherPage = ({ params }: {params: {teacherID: string}}) => {
+const NoLogTeacherPage = async ({ params }: {params: {teacherID: string}}) => {
     
-    getComentarios(params.teacherID)
-    getTeacher(params.teacherID)
+    await getComentarios(params.teacherID)
+    await getTeacher(params.teacherID)
     return(
     <>
         <HeaderDeslogado/>
