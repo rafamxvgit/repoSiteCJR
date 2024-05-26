@@ -14,8 +14,8 @@ interface Teacher {
 }
 interface Comentario {
     id: number
-    idAutor: number,
-    idAlvo: number,
+    nomeAutor: string,
+    nomeAlvo: string,
     data: string
     conteudo: string
 }
@@ -34,7 +34,7 @@ const getComentarios = async (id: string) => {
 }
 
 const CriarComentario = (obj: Comentario) => {
-    return <Comentario autor={obj.idAutor+""} professor={obj.idAlvo+""} data={obj.data} conteudo={obj.conteudo} imagem="/images/LogoUnB.svg"/>
+    return <Comentario autor={obj.nomeAutor} professor={obj.nomeAlvo} data={obj.data} conteudo={obj.conteudo} imagem="/images/LogoUnB.svg"/>
 }
   
 

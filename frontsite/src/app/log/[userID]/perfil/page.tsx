@@ -4,8 +4,8 @@ import Comentario from "@/app/components/comentario";
 import HeaderLogado from "@/app/components/headerLogado";
 
 interface Comentario {
-  idAutor: string,
-  idAlvo: string
+  nomeAutor: string
+  nomeAlvo: string
   data: string
   conteudo: string
   imagem: string
@@ -22,7 +22,7 @@ let coments: Comentario[];
 let autor: Autor;
 
 const CriarComentario = (obj: Comentario) => {
-  return <Comentario autor={obj.idAutor} professor={obj.idAlvo} data={obj.data} conteudo={obj.conteudo} imagem={obj.imagem}/>
+  return <Comentario autor={obj.nomeAutor} professor={obj.nomeAlvo} data={obj.data} conteudo={obj.conteudo} imagem={obj.imagem}/>
 }
 
 const getComentarios = async (id: string) => {
