@@ -2,6 +2,7 @@ import axios from "axios";
 import React from "react";
 import Comentario from "@/app/components/comentario";
 import HeaderLogado from "@/app/components/headerLogado";
+import ButExcluir from "@/app/components/botaoExcluir";
 
 interface Comentario {
   nomeAutor: string
@@ -56,8 +57,8 @@ const Perfil = async ({ params }: {params: { userID: string}}) => {
               <div className="h-1/2 flex justify-end">
                 <div className="w-1/2 flex flex-col justify-evenly content-around">
                   <div className="h-fit w-full flex justify-evenly">
-                    <button className="h-12 w-1/4 bg-lime-500 rounded-lg">editar perfil</button>
-                    <button className="h-12 w-1/4 bg-lime-500 rounded-lg">excluir perfil</button>
+                    <a href={`/log/${params.userID}/editPerfil`} className="h-12 w-1/4 bg-lime-500 rounded-lg text-center content-center">editar perfil</a>
+                    <ButExcluir userID={params.userID} estilo="h-12 w-1/4 bg-lime-500 rounded-lg"></ButExcluir>
                   </div>
                 </div>
               </div>

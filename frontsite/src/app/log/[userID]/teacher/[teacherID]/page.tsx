@@ -33,6 +33,7 @@ const getTeacher = async (id: string) => {
 const getComentarios = async (id: string) => {
     const comentarios = await axios.get(`http://localhost:3005/post/alvo${id}`);
     comments = comentarios.data;
+    comments.reverse()
 }
 
 const CriarComentario = (obj: Comentario) => {

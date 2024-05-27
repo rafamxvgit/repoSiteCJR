@@ -23,7 +23,9 @@ const FormLogin: React.FC<boxProps> = () => {
 
     const submit =async (values: Usuario) => {
         const userData = await axios.post('http://localhost:3005/user/login', values)
-        router.push(`/log/${userData.data.id}/feed`)
+        if (userData.data.id != undefined){
+            router.push(`/log/${userData.data.id}/feed`)
+        }
     }
 
     return (

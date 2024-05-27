@@ -1,4 +1,5 @@
 "use client"
+import { useRouter } from "next/navigation";
 import React from "react";
 import { Formik, Form, Field } from "formik";
 import axios from "axios";
@@ -22,6 +23,7 @@ const CampoAvaliacao: React.FC<parametros> = ({idAutor, idAlvo}) => {
         const comment = {idAutor: +idAutor, idAlvo: +idAlvo, conteudo: values.conteudo, data: Date().toString()}
         console.log(comment)
         await axios.post("http://localhost:3005/post", comment)
+        window.location.reload()
     }
 
     return (

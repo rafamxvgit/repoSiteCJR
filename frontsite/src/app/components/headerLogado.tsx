@@ -1,7 +1,8 @@
 import React from 'react'
 
-interface vazia {
 
+//! passar o link de perfil como um parâmentro do componente
+interface vazia {
 }
 
 const HeaderLogado: React.FC<vazia> = () => {
