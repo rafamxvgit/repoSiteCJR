@@ -1,18 +1,27 @@
+"use client"
 import { AvaliacaoDTO } from "./interfacesGlobais";
+import axios from "axios";
 
 interface PropsAvaliacao { dados: AvaliacaoDTO, loged: boolean }
+
+
+
 const Avaliacao: React.FC<PropsAvaliacao> = ({ dados, loged }) => {
     let BotaoExcluir: () => React.JSX.Element;
+    const clickExcluir = async () => {
+        await axios.delete(`http://localhost:3005/post/${dados.id}`)
+        window.location.reload()
+    }
     if (loged) {
         BotaoExcluir = () => {
-            return(
+            return (
                 <div className="w-1/12">
-                    <button className="bg-lime-200 p-1 rounded-md">excluir</button>
+                    <button className="bg-lime-200 p-1 rounded-md" onClick={clickExcluir}>excluir</button>
                 </div>)
         }
     }
     else {
-        BotaoExcluir = () => {return(<></>)}
+        BotaoExcluir = () => { return (<></>) }
     }
     return (
         <div className="w-full h-fit flex flex-col gap-3 bg-lime-500 p-3 rounded-lg">
@@ -28,7 +37,7 @@ const Avaliacao: React.FC<PropsAvaliacao> = ({ dados, loged }) => {
             <div className="h-fit bg-white p-2 rounded-lg">
                 <p>{dados.conteudo}</p>
             </div>
-            <BotaoExcluir/>
+            <BotaoExcluir />
         </div>
     );
 };

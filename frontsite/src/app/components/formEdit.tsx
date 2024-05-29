@@ -12,9 +12,7 @@ const validationNome = yup.object({ nome: yup.string().required('Required') })
 
 
 
-const submitFoto = async () => { console.log("Foto") }
 
-const submitNome = async () => { console.log("Nome") }
 
 
 interface Valores {
@@ -24,8 +22,19 @@ interface Valores {
 const FormEdit: React.FC<Valores> = ({ userID }) => {
 
     const submitSenha = async (values: { senha: string }) => {
-        const res = await axios.patch(`http://localhost:3005/user/senha${userID}`, values);
+        await axios.patch(`http://localhost:3005/user/senha${userID}`, values);
         window.location.reload()
+    }
+
+    const submitFoto = async (values: { foto: string}) => {
+        await axios.patch(`http://localhost:3005/user/imagem${userID}`, values);
+        window.location.reload()
+    }
+
+    const submitNome = async (values: { nome: string}) => {
+        await axios.patch(`http://localhost:3005/user/imagem${userID}`, values);
+        window.location.reload()
+
     }
 
     return (
