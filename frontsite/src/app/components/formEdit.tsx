@@ -4,10 +4,10 @@ import axios from "axios";
 import * as yup from 'yup';
 
 const initSenha = { senha: '' }
-const initFoto = { foto: '' }
+const initFoto = { imagem: '' }
 const initNome = { nome: '' }
 const validationSenha = yup.object({ senha: yup.string().required('Required') })
-const validationFoto = yup.object({ foto: yup.string().required('Required') })
+const validationFoto = yup.object({ imagem: yup.string().required('Required') })
 const validationNome = yup.object({ nome: yup.string().required('Required') })
 
 
@@ -26,7 +26,7 @@ const FormEdit: React.FC<Valores> = ({ userID }) => {
         window.location.reload()
     }
 
-    const submitFoto = async (values: { foto: string}) => {
+    const submitFoto = async (values: { imagem: string}) => {
         await axios.patch(`http://localhost:3005/user/imagem${userID}`, values);
         window.location.reload()
     }
@@ -59,7 +59,7 @@ const FormEdit: React.FC<Valores> = ({ userID }) => {
                     <Formik initialValues={initFoto} validationSchema={validationFoto} onSubmit={submitFoto}>
                         <Form className="w-full flex justify-center gap-2">
                             <div className="w-5/6">
-                                <Field id='foto' type='text' name='foto' placeholder='Mudar Foto' className='w-full h-12 text-lg rounded-lg p-3 bg-lime-200' />
+                                <Field id='imagem' type='text' name='imagem' placeholder='Mudar Foto' className='w-full h-12 text-lg rounded-lg p-3 bg-lime-200' />
                             </div>
                             <div className="w-1/6">
                                 <button className="h-12 w-full bg-lime-400 rounded-lg" type='submit'>submit</button>

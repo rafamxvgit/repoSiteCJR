@@ -21,7 +21,7 @@ const EditPerfil = async ({ params }: { params: { userID: string } }) => {
                         <img src="/images/imageDemoLogin.png" alt="" />
                     </div>
                     <div className="h-1/2 w-full flex justify-center gap-5">
-                        <img src="/images/sad.png" alt="" className="h-2/3 rounded-full border-4 aspect-square" />
+                        <img src={user.foto} alt="" className="h-2/3 rounded-full border-4 aspect-square" />
                         <div className="h-2/3 bg-lime-200 p-3 rounded-lg flex flex-col justify-evenly">
                             <div>
                                 <h3 className="text-2xl">nome:</h3>

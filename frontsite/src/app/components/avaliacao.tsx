@@ -15,7 +15,7 @@ const Avaliacao: React.FC<PropsAvaliacao> = ({ dados, loged }) => {
     if (loged) {
         BotaoExcluir = () => {
             return (
-                <div className="w-1/12">
+                <div>
                     <button className="bg-lime-200 p-1 rounded-md" onClick={clickExcluir}>excluir</button>
                 </div>)
         }
@@ -23,6 +23,14 @@ const Avaliacao: React.FC<PropsAvaliacao> = ({ dados, loged }) => {
     else {
         BotaoExcluir = () => { return (<></>) }
     }
+    const BotaoComentarios = () => {
+        return (
+            <div>
+                <button className="bg-lime-200 p-1 rounded-md">comentarios</button>
+            </div>
+        )
+    }
+
     return (
         <div className="w-full h-fit flex flex-col gap-3 bg-lime-500 p-3 rounded-lg">
             <div className="h-16 flex">
@@ -37,7 +45,10 @@ const Avaliacao: React.FC<PropsAvaliacao> = ({ dados, loged }) => {
             <div className="h-fit bg-white p-2 rounded-lg">
                 <p>{dados.conteudo}</p>
             </div>
-            <BotaoExcluir />
+            <div className="flex justify-start gap-3">
+                <BotaoExcluir />
+                <BotaoComentarios />
+            </div>
         </div>
     );
 };
