@@ -1,5 +1,6 @@
 export interface UserDTO {
     id: number
+    senha: string
     nome: string
     email: string
     departamento: string
