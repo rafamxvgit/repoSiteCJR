@@ -82,7 +82,6 @@ const FormEdit: React.FC<Valores> = ({ userID }) => {
                     </Formik>
                 </div>
             </div>
-
         </>
     )
 }
