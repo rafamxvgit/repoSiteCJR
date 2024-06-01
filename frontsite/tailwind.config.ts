@@ -25,6 +25,7 @@ const config: Config = {
         customWhite: '#f1f1f1',
         customPurple: '#4B0082',
         customGray: '#455A64',
+        customBlue: '#294E85',
       }
     },
   },

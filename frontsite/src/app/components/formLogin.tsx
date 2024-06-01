@@ -37,7 +37,7 @@ const FormLogin: React.FC<boxProps> = () => {
         onSubmit={submit}
         validationSchema={validation}
       >
-        <Form className="size-full flex flex-col justify-evenly">
+        <Form className="size-full flex flex-col justify-evenly font-serif">
           <Field
             id="email"
             type="email"
@@ -54,14 +54,14 @@ const FormLogin: React.FC<boxProps> = () => {
           ></Field>
           <div className="w-full h-12 flex justify-center">
             <button
-              className="h-full w-1/3 mr-3 bg-lime-300 rounded-md border border-black focus:border-2 focus:border-black focus:shadow focus:shadow-black"
+              className="font-serif h-full w-1/3 mr-3 bg-lime-300 rounded-md border border-black hover:border-2 hover:border-black hover:shadow hover:shadow-black hover:translate-y-1 hover:bg-lime-400"
               type="submit"
             >
               Entrar
             </button>
             <a
               href="./register"
-              className="h-full w-1/3 ml-3 bg-lime-300 rounded-md text-center content-center border border-black focus:border-2 focus:border-black focus:shadow focus:shadow-black"
+              className="font-serif h-full w-1/3 ml-3 bg-lime-300 rounded-md text-center content-center border border-black hover:border-2 hover:border-black hover:shadow hover:shadow-black hover:translate-y-1 hover:bg-lime-400"
               type="button"
             >
               Registrar
