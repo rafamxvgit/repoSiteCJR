@@ -17,15 +17,21 @@ export interface AvaliacaoDTO {
     data: string
     conteudo: string
     comentarios: ComentarioDTO[]
-    imagem: string
+    foto: string
 }
+
+type DefaultValues = Pick<AvaliacaoDTO, 'comentarios'>
+const defaultAvalValues: DefaultValues = {comentarios: []}
+type Optional<T, K extends keyof T> = Pick<Partial<T> , K> & Omit<T, K>;
+type AvaliacaoWithDefaults = Optional<AvaliacaoDTO, keyof DefaultValues>
+
+export default AvaliacaoWithDefaults;
 
 export interface ComentarioDTO {
     id: number
     idAutor: number
     nomeAutor: ''
     idAlvo: number
-    nomeAlvo: ''
     data: string
     conteudo: string
     foto: ''
