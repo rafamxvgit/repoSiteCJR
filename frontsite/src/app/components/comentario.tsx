@@ -10,7 +10,9 @@ const Comentario: React.FC<CometnarioProps> = ({ comentario, loged }) => {
         <img className="h-10 aspect-square rounded-full" src={comentario.foto} alt="" />
         <p className="self-center">{comentario.nomeAutor.toString()} comentou:</p>
       </div>
-      <p className="bg-blue-200 w-full rounded-lg p-2">{comentario.conteudo}</p>
+      <div className="flex">
+        <p className="bg-blue-200 w-full rounded-lg p-2">{comentario.conteudo}</p>
+      </div>
     </div>
   )
 }
