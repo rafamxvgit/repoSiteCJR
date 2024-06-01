@@ -24,7 +24,7 @@ const Perfil = async ({ params }: {params: { userID: string}}) => {
   return (
     <>
       <HeaderLogado/>
-      <PerfilMain loged={true} user={autor} avals={avals}/>
+      <PerfilMain loged={+params.userID} user={autor} avals={avals}/>
     </>
   );
 };

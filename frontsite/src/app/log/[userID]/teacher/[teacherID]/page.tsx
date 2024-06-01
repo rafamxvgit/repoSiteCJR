@@ -1,14 +1,12 @@
 import React from "react";
 import axios from "axios";
 import HeaderLogado from "@/app/components/headerLogado";
-import Comentario from "@/app/components/comentario";
 import CampoAvaliacao from "@/app/components/avalProf";
 import { AvaliacaoDTO, TeacherDTO } from "@/app/components/interfacesGlobais";
 import Avaliacao from "@/app/components/avaliacao";
 
 let teacher: TeacherDTO
 let avals: AvaliacaoDTO[];
-
 
 const getTeacher = async (id: string) => {
     const professor = await axios.get(`http://localhost:3005/professor/${id}`);
@@ -22,7 +20,7 @@ const getComentarios = async (id: string) => {
 }
 
 const CriarComentario = (obj: AvaliacaoDTO) => {
-    return <Avaliacao dados={obj} loged={false}/>
+    return <Avaliacao dados={obj} loged={-1}/>
 }
   
 const LogTeacherPage = async ({ params }: {params: {userID: string, teacherID: string}}) => {

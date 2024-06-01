@@ -5,10 +5,10 @@ import Avaliacao from "./avaliacao"
 
 
 
-interface PropsInfoSection { user: UserDTO, loged: boolean }
+interface PropsInfoSection { user: UserDTO, loged: number }
 const UserInfoSection: React.FC<PropsInfoSection> = ({ user, loged }) => {
     let Opts: () => React.JSX.Element;
-    if (loged) {
+    if (loged != -1) {
         Opts = () => {
             return (
                 <div className="h-fit w-full flex justify-evenly">
@@ -53,7 +53,7 @@ const UserInfoSection: React.FC<PropsInfoSection> = ({ user, loged }) => {
     )
 }
 
-interface PropsPostSection { posts: AvaliacaoDTO[], loged: boolean }
+interface PropsPostSection { posts: AvaliacaoDTO[], loged: number }
 const PostSection: React.FC<PropsPostSection> = ({ posts, loged }) => {
 
     const CriarPost = (obj: AvaliacaoDTO) => {
@@ -66,7 +66,7 @@ const PostSection: React.FC<PropsPostSection> = ({ posts, loged }) => {
     )
 }
 
-interface PropsPerfil { loged: boolean, user: UserDTO, avals: AvaliacaoDTO[] }
+interface PropsPerfil { loged: number, user: UserDTO, avals: AvaliacaoDTO[] }
 const PerfilMain: React.FC<PropsPerfil> = ({ loged, user, avals }) => {
     if (loged) { }
 

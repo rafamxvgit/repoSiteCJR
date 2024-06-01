@@ -4,12 +4,14 @@ import { AvaliacaoDTO } from "./interfacesGlobais";
 import axios from "axios";
 import { ComentarioDTO } from "./interfacesGlobais";
 import Comentario from "./comentario";
+import { Formik, Form, Field } from "formik";
 
-interface PropsAvaliacao { dados: AvaliacaoDTO, loged: boolean }
+interface PropsAvaliacao { dados: AvaliacaoDTO, loged: number }
 
 const Avaliacao: React.FC<PropsAvaliacao> = ({ dados, loged }) => {
     
     let BotaoExcluir: () => React.JSX.Element;
+    let NovoComentario: () => React.JSX.Element;
 
     const [comentarios, setComentarios] = useState<ComentarioDTO[]>(dados.comentarios)
 
@@ -27,7 +29,7 @@ const Avaliacao: React.FC<PropsAvaliacao> = ({ dados, loged }) => {
         }
     }
 
-    if (loged) {
+    if (loged == dados.idAutor) {
         BotaoExcluir = () => {
             return (
                 <div>
@@ -38,6 +40,35 @@ const Avaliacao: React.FC<PropsAvaliacao> = ({ dados, loged }) => {
     else {
         BotaoExcluir = () => { return (<></>) }
     }
+    
+    if (loged != -1) {
+        NovoComentario = () => {
+            const initVals = {conteudo: ''}
+            const submit = async ({conteudo}: typeof initVals) => {
+                const Value = {idAlvo: dados.id, idAutor: loged, conteudo: conteudo, data: Date.now().toString()}
+                console.log(Value)
+                await axios.post('http://localhost:3005/comentario', Value)
+                window.location.reload()
+            }
+            return(
+                <div>
+                    <div className="h-1 bg-black"/>
+                    <p className="my-2">fazer um comentario:</p>
+                    <Formik initialValues={initVals} onSubmit={submit}>
+                    <Form>
+                        <Field id="conteudo" type="text" name="conteudo" placeholder="deixe seu comentário" className="w-full h-10 rounded-lg p-3"/>
+                        <button type="submit" className="h-10 bg-lime-300 mt-3 p-2 rounded-lg"> enviar </button>
+                    </Form>
+                </Formik>
+                </div>
+            )
+        }
+    }
+    else {
+        NovoComentario = () => {
+            return(<></>)
+        }
+    }
 
     const BotaoComentarios = () => {
         return (
@@ -46,6 +77,7 @@ const Avaliacao: React.FC<PropsAvaliacao> = ({ dados, loged }) => {
             </div>
         )
     }
+
 
     const createComentario = (comentario: ComentarioDTO) => {
         return(
@@ -56,7 +88,7 @@ const Avaliacao: React.FC<PropsAvaliacao> = ({ dados, loged }) => {
     const Comentarios = () => {
         return(
         <div>
-            {comentarios.map(createComentario)}
+            {comentarios.reverse().map(createComentario)}
         </div>
         )
     }
@@ -78,6 +110,9 @@ const Avaliacao: React.FC<PropsAvaliacao> = ({ dados, loged }) => {
             <div className="flex justify-start gap-3">
                 <BotaoExcluir />
                 <BotaoComentarios />
+            </div>
+            <div>
+                <NovoComentario/>
             </div>
             <div>
                 <Comentarios/>
