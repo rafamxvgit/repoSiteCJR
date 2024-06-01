@@ -56,12 +56,12 @@ const UserInfoSection: React.FC<PropsInfoSection> = ({ user, loged }) => {
 interface PropsPostSection { posts: AvaliacaoDTO[], loged: boolean }
 const PostSection: React.FC<PropsPostSection> = ({ posts, loged }) => {
 
-    const CriarComentario = (obj: AvaliacaoDTO) => {
+    const CriarPost = (obj: AvaliacaoDTO) => {
         return <Avaliacao dados={obj} loged={loged} />
     }
     return (
         <section className="h-full flex flex-col gap-12">
-            {posts.map(CriarComentario)}
+            {posts.map(CriarPost)}
         </section>
     )
 }

@@ -1,17 +1,32 @@
 "use client"
+import { useState } from "react";
 import { AvaliacaoDTO } from "./interfacesGlobais";
 import axios from "axios";
+import { ComentarioDTO } from "./interfacesGlobais";
+import Comentario from "./comentario";
 
 interface PropsAvaliacao { dados: AvaliacaoDTO, loged: boolean }
 
-
-
 const Avaliacao: React.FC<PropsAvaliacao> = ({ dados, loged }) => {
+    
     let BotaoExcluir: () => React.JSX.Element;
+
+    const [comentarios, setComentarios] = useState<ComentarioDTO[]>(dados.comentarios)
+
     const clickExcluir = async () => {
         await axios.delete(`http://localhost:3005/post/${dados.id}`)
         window.location.reload()
     }
+
+    const clickComentarios = () => {
+        if (comentarios.length == 0) {
+            setComentarios(dados.comentarios)
+        }
+        else {
+            setComentarios([])
+        }
+    }
+
     if (loged) {
         BotaoExcluir = () => {
             return (
@@ -23,11 +38,26 @@ const Avaliacao: React.FC<PropsAvaliacao> = ({ dados, loged }) => {
     else {
         BotaoExcluir = () => { return (<></>) }
     }
+
     const BotaoComentarios = () => {
         return (
             <div>
-                <button className="bg-lime-200 p-1 rounded-md">comentarios</button>
+                <button onClick={clickComentarios} className="bg-lime-200 p-1 rounded-md">comentarios</button>
             </div>
+        )
+    }
+
+    const createComentario = (comentario: ComentarioDTO) => {
+        return(
+            <Comentario comentario={comentario} loged={loged}/>
+        )
+    }
+
+    const Comentarios = () => {
+        return(
+        <div>
+            {comentarios.map(createComentario)}
+        </div>
         )
     }
 
@@ -48,6 +78,9 @@ const Avaliacao: React.FC<PropsAvaliacao> = ({ dados, loged }) => {
             <div className="flex justify-start gap-3">
                 <BotaoExcluir />
                 <BotaoComentarios />
+            </div>
+            <div>
+                <Comentarios/>
             </div>
         </div>
     );
