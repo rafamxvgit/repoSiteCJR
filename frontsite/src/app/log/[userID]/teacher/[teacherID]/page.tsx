@@ -19,58 +19,59 @@ const getComentarios = async (id: string) => {
     avals.reverse()
 }
 
-const CriarComentario = (obj: AvaliacaoDTO) => {
-    return <Avaliacao dados={obj} loged={-1}/>
-}
-  
-const LogTeacherPage = async ({ params }: {params: {userID: string, teacherID: string}}) => {
-    
+
+
+const LogTeacherPage = async ({ params }: { params: { userID: string, teacherID: string } }) => {
+
+    const CriarComentario = (obj: AvaliacaoDTO) => {
+        return <Avaliacao dados={obj} loged={+params.userID} />
+    }
     await getComentarios(params.teacherID)
     await getTeacher(params.teacherID)
-    return(
-    <>
-        <HeaderLogado/>
-        <main className="w-screen h-svh flex justify-center">
-            <div className="w-5/6">
-                
-                {/* parte da foto e do banner*/}
-                <section className="h-80">
-                    <div className="h-1/4 bg-lime-500"/>
+    return (
+        <>
+            <HeaderLogado />
+            <main className="w-screen h-svh flex justify-center">
+                <div className="w-5/6">
 
-                    <div className="h-1/4 flex bg-lime-500">
-                        <div className="w-32"></div>
-                        <img src={teacher.foto} alt="imagem perfil" className="h-48 rounded-full border-lime-950 border-2 aspect-square"/>
-                    </div>
-                    
-                    <div className="h-1/2 flex content-around">
-                        <div className="w-96"></div>
-                        <div className="w-96 flex flex-col justify-evenly content-around">
-                            <div className="bg-lime-200 rounded-lg p-2">
-                                <p className="text-xl">professor:</p>
-                                <p>nome: {teacher.nome}</p>
-                                <p>curso: {teacher.curso}</p>
-                                <p>email: {teacher.email}</p>
+                    {/* parte da foto e do banner*/}
+                    <section className="h-80">
+                        <div className="h-1/4 bg-lime-500" />
+
+                        <div className="h-1/4 flex bg-lime-500">
+                            <div className="w-32"></div>
+                            <img src={teacher.foto} alt="imagem perfil" className="h-48 rounded-full border-lime-950 border-2 aspect-square" />
+                        </div>
+
+                        <div className="h-1/2 flex content-around">
+                            <div className="w-96"></div>
+                            <div className="w-96 flex flex-col justify-evenly content-around">
+                                <div className="bg-lime-200 rounded-lg p-2">
+                                    <p className="text-xl">professor:</p>
+                                    <p>nome: {teacher.nome}</p>
+                                    <p>curso: {teacher.curso}</p>
+                                    <p>email: {teacher.email}</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    
-                </section>
-                
-                <div className="h-1 bg-black"/>
 
-                {/*fazer um comentário*/}
-                <CampoAvaliacao idAutor={params.userID} idAlvo={params.teacherID}/>
-                <div className="h-1 bg-black mb-2"/>
+                    </section>
 
-                {/*comentários sobre o professor*/}
-                <section className="flex flex-col gap-6 my-2">
-                    {avals.map(CriarComentario)}
-                </section>
+                    <div className="h-1 bg-black" />
+
+                    {/*fazer um comentário*/}
+                    <CampoAvaliacao idAutor={params.userID} idAlvo={params.teacherID} />
+                    <div className="h-1 bg-black mb-2" />
+
+                    {/*comentários sobre o professor*/}
+                    <section className="flex flex-col gap-6 my-2">
+                        {avals.map(CriarComentario)}
+                    </section>
 
 
-            </div>
-        </main>
-    </>
+                </div>
+            </main>
+        </>
     )
 }
 
