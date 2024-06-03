@@ -1,44 +1,28 @@
 import React from "react";
 import axios from "axios";
 import HeaderDeslogado from "@/app/components/headerDeslogado";
-import Comentario from "@/app/components/comentario";
+import { AvaliacaoDTO, TeacherDTO } from "@/app/components/interfacesGlobais";
+import Avaliacao from "@/app/components/avaliacao";
 
-interface Teacher {
-    id: number
-    nome: string,
-    email: string,
-    senha: string,
-    curso: string,
-    foto: string,
-    departamento: string
-}
-interface Comentario {
-    id: number
-    nomeAutor: string,
-    nomeAlvo: string,
-    data: string
-    conteudo: string
-}
-
-let teacher: Teacher;
-let comments: Comentario[]; 
+let teacher: TeacherDTO
+let avals: AvaliacaoDTO[];
 
 const getTeacher = async (id: string) => {
-    const professor = await axios.get(`http://localhost:3005/professor/${id}`)
+    const professor = await axios.get(`http://localhost:3005/professor/${id}`);
     teacher = professor.data;
 }
 
 const getComentarios = async (id: string) => {
     const comentarios = await axios.get(`http://localhost:3005/post/alvo${id}`);
-    comments = comentarios.data;
+    avals = comentarios.data;
+    avals.reverse()
 }
 
-const CriarComentario = (obj: Comentario) => {
-    return <Comentario autor={obj.nomeAutor} professor={obj.nomeAlvo} data={obj.data} conteudo={obj.conteudo} imagem="/images/LogoUnB.svg"/>
+const CriarComentario = (obj: AvaliacaoDTO) => {
+    return <Avaliacao dados={obj} loged={-1}/>
 }
   
-
-const NoLogTeacherPage = async ({ params }: {params: {teacherID: string}}) => {
+const NoLogTeacherPage = async ({ params }: {params: {userID: string, teacherID: string}}) => {
     
     await getComentarios(params.teacherID)
     await getTeacher(params.teacherID)
@@ -70,15 +54,14 @@ const NoLogTeacherPage = async ({ params }: {params: {teacherID: string}}) => {
                     </div>
                     
                 </section>
-
+                
                 <div className="h-1 bg-black"/>
 
                 {/*comentários sobre o professor*/}
                 <section className="flex flex-col gap-6 my-2">
-                    {comments.map(CriarComentario)}
+                    {avals.map(CriarComentario)}
                 </section>
 
-                <div className="h-1 bg-black mb-2"/>
 
             </div>
         </main>
