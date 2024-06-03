@@ -8,11 +8,13 @@ const HeaderLogado: React.FC<vazia> = () => {
     <>
       <nav className="bg-lime-300 flex items-center h-20 p-2 w-screen">
         <div className="w-1/3">
-          <img
-            className="ml-5 h-8 w-16"
-            src="/images/LogoUnB.svg"
-            alt="logo UnB"
-          />
+          <a href="./feed">
+            <img
+              className="ml-5 h-8 w-16"
+              src="/images/LogoUnB.svg"
+              alt="logo UnB"
+            />
+          </a>
         </div>
         <div className="w-1/3 justify-center">
           <h1 className="text-center text-2xl font-serif border-8 border-double border-lime-400 shadow-md shadow-lime-400 p-2">
