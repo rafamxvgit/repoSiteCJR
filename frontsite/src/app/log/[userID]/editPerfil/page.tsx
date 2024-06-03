@@ -15,7 +15,7 @@ const EditPerfil = async ({ params }: { params: { userID: string } }) => {
     <>
       <div className="h-screen flex flex-col">
         <HeaderLogado />
-        <div className="w-screen h-screen flex border-t-4 border-lime-400">
+        <div className="w-screen h-screen flex">
           <div className="w-1/2 h-full flex flex-col border-r-4 border-lime-400 bg-customGray">
             <div className="h-2/6 w-full flex border-b-4 border-lime-400">
               <div className="mt-3 ml-8 w-64 h-44 relative overflow-hidden border-solid border-4 border-lime-400 rounded-full flex flex-col justify-center items-center shadow-md shadow-lime-400">

@@ -6,7 +6,7 @@ interface vazia {}
 const HeaderLogado: React.FC<vazia> = () => {
   return (
     <>
-      <nav className="bg-lime-300 flex items-center h-20 p-2 w-screen">
+      <nav className="bg-lime-300 flex items-center h-20 p-2 w-screen border-b-4 border-lime-400">
         <div className="w-1/3">
           <a href="./feed">
             <img

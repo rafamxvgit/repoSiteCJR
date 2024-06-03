@@ -10,21 +10,23 @@ let autor: UserDTO;
 const getAvals = async (id: string) => {
   const getAvals = await axios.get(`http://localhost:3005/post/autor${id}`);
   avals = getAvals.data;
-}
+};
 
 const getUser = async (id: string) => {
   const auth = await axios.get(`http://localhost:3005/user/${id}`);
   autor = auth.data;
-}
+};
 
-const Perfil = async ({ params }: {params: { userID: string}}) => { 
-  await getAvals(params.userID)
-  await getUser(params.userID)
+const Perfil = async ({ params }: { params: { userID: string } }) => {
+  await getAvals(params.userID);
+  await getUser(params.userID);
 
   return (
     <>
-      <HeaderLogado/>
-      <PerfilMain loged={+params.userID} user={autor} avals={avals}/>
+      <div className="w-screen flex flex-col">
+        <HeaderLogado />
+        <PerfilMain loged={+params.userID} user={autor} avals={avals} />
+      </div>
     </>
   );
 };
