@@ -50,10 +50,7 @@ const EditPerfil = async ({ params }: { params: { userID: string } }) => {
                 Sobre:
               </h1>
               <h2 className="text-left w-3/4 mt-14 ml-20 font-serif text-lime-400 border-2 border-black p-8">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Officiis quo modi quidem nihil earum incidunt voluptas magni
-                voluptatibus nobis harum eum itaque quia facere, tempora vero,
-                ipsa illo, quis enim.
+                {user.bio}
               </h2>
             </div>
           </div>

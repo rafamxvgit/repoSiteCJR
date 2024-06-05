@@ -6,6 +6,7 @@ export interface UserDTO {
     departamento: string
     curso: string
     foto: string
+    bio: string
 }
 
 export interface TeacherDTO {
