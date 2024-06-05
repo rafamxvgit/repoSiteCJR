@@ -1,5 +1,5 @@
 import axios from "axios";
-import HeaderLogado from "@/app/components/headerLogado";
+import HeaderComp from "@/app/components/headerComplete";
 import PerfilMain from "@/app/components/perfilMain";
 import { AvaliacaoDTO } from "@/app/components/interfacesGlobais";
 import { UserDTO } from "@/app/components/interfacesGlobais";
@@ -24,7 +24,7 @@ const Perfil = async ({ params }: { params: { userID: string } }) => {
   return (
     <>
       <div className="w-screen flex flex-col">
-        <HeaderLogado />
+        <HeaderComp logado={+params.userID} />
         <PerfilMain loged={+params.userID} user={autor} avals={avals} />
       </div>
     </>

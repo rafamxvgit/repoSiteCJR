@@ -1,5 +1,5 @@
 import axios from "axios";
-import HeaderDeslogado from "@/app/components/headerDeslogado";
+import HeaderComp from "@/app/components/headerComplete";
 import FeedMain from "@/app/components/feedMain";
 import { TeacherDTO } from "@/app/components/interfacesGlobais";
 
@@ -14,7 +14,7 @@ const FeedNoLog = async () => {
     await getProf();
     return(
     <>
-        <HeaderDeslogado/>
+        <HeaderComp logado={-1}/>
         <FeedMain todosProfessores={todosProfessores}/>
     </>
     )

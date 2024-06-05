@@ -1,4 +1,4 @@
-import HeaderLogado from "@/app/components/headerLogado";
+import HeaderComp from "@/app/components/headerComplete";
 import FeedMain from "@/app/components/feedMain";
 import axios from "axios";
 
@@ -24,7 +24,7 @@ const FeedLog = async ({ params }: {params: { userID: number}}) => {
     await getTeachers()
     return(
     <>
-        <HeaderLogado/>
+        <HeaderComp logado={+params.userID}/>
         <FeedMain todosProfessores={todosProfessores}/>
     </>
     )

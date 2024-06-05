@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import HeaderLogado from "@/app/components/headerLogado";
+import HeaderComp from "@/app/components/headerComplete";
 import CampoAvaliacao from "@/app/components/avalProf";
 import { AvaliacaoDTO, TeacherDTO } from "@/app/components/interfacesGlobais";
 import Avaliacao from "@/app/components/avaliacao";
@@ -31,7 +31,7 @@ const LogTeacherPage = async ({ params }: { params: { userID: string, teacherID:
     await getTeacher(params.teacherID)
     return (
         <>
-            <HeaderLogado />
+            <HeaderComp logado={+params.userID} />
             <main className="w-screen h-svh flex justify-center">
                 <div className="w-5/6">
 

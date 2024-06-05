@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import HeaderDeslogado from "@/app/components/headerDeslogado";
+import HeaderComp from "@/app/components/headerComplete";  
 import { AvaliacaoDTO, TeacherDTO } from "@/app/components/interfacesGlobais";
 import Avaliacao from "@/app/components/avaliacao";
 
@@ -28,7 +28,7 @@ const NoLogTeacherPage = async ({ params }: {params: {userID: string, teacherID:
     await getTeacher(params.teacherID)
     return(
     <>
-        <HeaderDeslogado/>
+        <HeaderComp logado={-1}/>
         <main className="w-screen h-svh flex justify-center">
             <div className="w-5/6">
                 
