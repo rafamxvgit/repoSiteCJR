@@ -59,9 +59,8 @@ const UserInfoSection: React.FC<PropsInfoSection> = ({ user, loged }) => {
           <ul className="list-disc text-lime-400">
             <li className="font-serif font-normal text-base">{user.nome}</li>
             <li className="font-serif font-normal text-base">{user.curso}</li>
-            <li className="font-serif font-normal text-base">
-              {user.departamento}
-            </li>
+            <li className="font-serif font-normal text-base">{user.departamento}</li>
+            <li className="font-serif font-normal text-base">Bio: {user.bio}</li>
           </ul>
         </div>
       </div>
@@ -74,6 +73,7 @@ interface PropsPostSection {
   loged: number;
 }
 const PostSection: React.FC<PropsPostSection> = ({ posts, loged }) => {
+  if (posts == undefined){posts = []}
   const CriarPost = (obj: AvaliacaoDTO) => {
     return <Avaliacao dados={obj} loged={loged} />;
   };
@@ -90,8 +90,6 @@ interface PropsPerfil {
   avals: AvaliacaoDTO[];
 }
 const PerfilMain: React.FC<PropsPerfil> = ({ loged, user, avals }) => {
-  if (loged) {
-  }
 
   return (
     <div className="w-dvw h-dvh flex justify-center bg-customWhite">
@@ -106,8 +104,8 @@ const PerfilMain: React.FC<PropsPerfil> = ({ loged, user, avals }) => {
             <h3 className="font-serif text-2xl">Posts:</h3>
           </div>
         </div>
-
         <PostSection posts={avals} loged={loged} />
+      
       </div>
     </div>
   );
