@@ -21,8 +21,8 @@ const PerfilNoLog = async ({params}: {params: {userID: string, otherUserID: stri
     await getAvals(params.otherUserID)
     return(
         <>
-        <HeaderComp logado={-1}/>
-        <PerfilMain loged={-1} user={user} avals={avals}/>
+        <HeaderComp logado={+params.userID}/>
+        <PerfilMain loged={+params.userID} user={user} avals={avals}/>
         </>
     )
 }

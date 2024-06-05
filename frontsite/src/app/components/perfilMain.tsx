@@ -9,7 +9,7 @@ interface PropsInfoSection {
 }
 const UserInfoSection: React.FC<PropsInfoSection> = ({ user, loged }) => {
   let Opts: () => React.JSX.Element;
-  if (loged != -1) {
+  if (loged == user.id) {
     Opts = () => {
       return (
         <div className="h-fit w-full flex justify-end">
