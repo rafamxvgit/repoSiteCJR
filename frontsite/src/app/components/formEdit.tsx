@@ -30,7 +30,7 @@ const FormEdit: React.FC<Valores> = ({ userID }) => {
   };
 
   const submitNome = async (values: { nome: string }) => {
-    await axios.patch(`http://localhost:3005/user/imagem${userID}`, values);
+    await axios.patch(`http://localhost:3005/user/nome${userID}`, values);
     window.location.reload();
   };
 
