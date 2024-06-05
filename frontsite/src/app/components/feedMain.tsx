@@ -2,28 +2,20 @@
 import TeacherIcon from "./teacherIcon"
 import React, { useState } from "react"
 import { Formik, Form, Field } from "formik"
+import { TeacherDTO } from "./interfacesGlobais"
 
-interface TeacherDto {
-    id: number,
-    nome: string,
-    email: string
-    senha: string
-    curso: string
-    departamento: string
-    foto: string
-}
-
-interface feedProps {todosProfessores: TeacherDto[]}
+interface feedProps {todosProfessores: TeacherDTO[]}
 
 const FeedMain: React.FC<feedProps> = ({todosProfessores}) => {
-    
-    const [visibleTeachers, setVisTeachers] = useState<TeacherDto[]>(todosProfessores);
+
+    const [visibleTeachers, setVisTeachers] = useState<TeacherDTO[]>(todosProfessores);
 
     const PesquisarProfessor = (entrada: {valor: string}) => {
+
         const newValue = entrada.valor.toLocaleLowerCase();
         const lenVal = newValue.length;
-        
-        const isMatch = (professor: TeacherDto) => {
+
+        const isMatch = (professor: TeacherDTO) => {
             const sliceNomeProfessor = professor.nome.toLowerCase().slice(0, lenVal)
             return(newValue == sliceNomeProfessor)
         }
@@ -36,7 +28,7 @@ const FeedMain: React.FC<feedProps> = ({todosProfessores}) => {
         }
     }
 
-    const CreateTeacherCard = (obj: TeacherDto, estilo: string) => {
+    const CreateTeacherCard = (obj: TeacherDTO, estilo: string) => {
         return(<TeacherIcon estilo={estilo} teacherID={obj.id} nome={obj.nome} foto={obj.foto}/>);
     }
 

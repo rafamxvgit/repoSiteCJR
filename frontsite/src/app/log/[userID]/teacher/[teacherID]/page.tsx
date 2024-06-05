@@ -26,6 +26,7 @@ const LogTeacherPage = async ({ params }: { params: { userID: string, teacherID:
     const CriarComentario = (obj: AvaliacaoDTO) => {
         return <Avaliacao dados={obj} loged={+params.userID} />
     }
+
     await getComentarios(params.teacherID)
     await getTeacher(params.teacherID)
     return (

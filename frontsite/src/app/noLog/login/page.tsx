@@ -1,4 +1,3 @@
-import React, { ChangeEventHandler, MouseEventHandler } from "react";
 import FormLogin from "@/app/components/formLogin";
 
 const loginPage = () => {
