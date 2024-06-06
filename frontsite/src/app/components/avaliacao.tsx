@@ -9,7 +9,7 @@ import { Formik, Form, Field } from "formik";
 interface PropsAvaliacao { dados: AvaliacaoDTO, loged: number }
 
 const Avaliacao: React.FC<PropsAvaliacao> = ({ dados, loged }) => {
-    
+    let theLink: string;
     let BotaoExcluir: () => React.JSX.Element;
     let NovoComentario: () => React.JSX.Element;
 
@@ -42,6 +42,7 @@ const Avaliacao: React.FC<PropsAvaliacao> = ({ dados, loged }) => {
     }
     
     if (loged != -1) {
+        theLink = `/log/${loged}/perfil/${dados.idAutor}`
         NovoComentario = () => {
             const initVals = {conteudo: ''}
             const submit = async ({conteudo}: typeof initVals) => {
@@ -65,6 +66,7 @@ const Avaliacao: React.FC<PropsAvaliacao> = ({ dados, loged }) => {
         }
     }
     else {
+        theLink = `/noLog/perfil/${dados.idAutor}`
         NovoComentario = () => {
             return(<></>)
         }
@@ -96,7 +98,7 @@ const Avaliacao: React.FC<PropsAvaliacao> = ({ dados, loged }) => {
     return (
         <div className="w-full h-fit flex flex-col gap-3 bg-lime-500 p-3 rounded-lg">
             <div className="h-16 flex">
-                <div className="w-1/2"><img className="h-full aspect-square rounded-full" src={dados.foto} alt="" /></div>
+                <a className="w-1/2" href={theLink}><img className="h-full aspect-square rounded-full" src={dados.foto} alt="" /></a>
                 <div className="w-1/2 flex gap-6 justify-end">
                     <p>autor: {dados.nomeAutor}</p>
                     <p>sobre: {dados.nomeAlvo}</p>
