@@ -1,11 +1,12 @@
 import axios from "axios";
 import HeaderComp from "@/app/components/headerComplete";
 import PerfilMain from "@/app/components/perfilMain";
-import { AvaliacaoDTO } from "@/app/components/interfacesGlobais";
+import { AvaliacaoDTO, ComentarioDTO } from "@/app/components/interfacesGlobais";
 import { UserDTO } from "@/app/components/interfacesGlobais";
 
 let avals: AvaliacaoDTO[];
 let autor: UserDTO;
+let comentarios: ComentarioDTO[]
 
 const getAvals = async (id: string) => {
   const getAvals = await axios.get(`http://localhost:3005/post/autor${id}`);
@@ -17,15 +18,21 @@ const getUser = async (id: string) => {
   autor = auth.data;
 };
 
+const getComents = async (id: string) => {
+  const getCom = await axios.get(`http://localhost:3005/comentario/user${id}`)
+  comentarios = getCom.data;
+}
+
 const Perfil = async ({ params }: { params: { userID: string } }) => {
   await getAvals(params.userID);
   await getUser(params.userID);
+  await getComents(params.userID)
 
   return (
     <>
       <div className="w-screen flex flex-col">
         <HeaderComp logado={+params.userID} />
-        <PerfilMain loged={+params.userID} user={autor} avals={avals} />
+        <PerfilMain loged={+params.userID} user={autor} avals={avals} comentarios={comentarios}/>
       </div>
     </>
   );

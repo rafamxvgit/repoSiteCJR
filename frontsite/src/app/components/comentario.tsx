@@ -1,3 +1,4 @@
+"use client"
 import React from "react";
 import { ComentarioDTO } from "./interfacesGlobais";
 import axios from "axios";

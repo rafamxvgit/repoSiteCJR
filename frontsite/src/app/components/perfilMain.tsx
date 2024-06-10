@@ -1,7 +1,8 @@
 import ButExcluir from "./botaoExcluir";
-import { AvaliacaoDTO } from "./interfacesGlobais";
+import { AvaliacaoDTO, ComentarioDTO } from "./interfacesGlobais";
 import { UserDTO } from "./interfacesGlobais";
 import Avaliacao from "./avaliacao";
+import Comentario from "./comentario";
 
 interface PropsInfoSection {
   user: UserDTO;
@@ -73,26 +74,45 @@ interface PropsPostSection {
   loged: number;
 }
 const PostSection: React.FC<PropsPostSection> = ({ posts, loged }) => {
-  if (posts == undefined){posts = []}
+  if (posts == undefined) { posts = [] }
   const CriarPost = (obj: AvaliacaoDTO) => {
     return <Avaliacao dados={obj} loged={loged} />;
   };
   return (
-    <section className="h-full flex flex-col gap-12">
+    <section className="h-fit flex flex-col gap-12">
       {posts.map(CriarPost)}
     </section>
   );
 };
 
+interface PropsComSection {
+  coments?: ComentarioDTO[];
+  loged: number
+}
+const ComentariosSection: React.FC<PropsComSection> = ({ coments, loged }) => {
+  if (coments == undefined) { coments = [] }
+  const CriarComentario = (obj: ComentarioDTO) => {
+    return <Comentario comentario={obj} loged={loged} />
+  }
+
+  return (
+    <>
+      <section className="flex flex-col gap-12">
+        {coments.map(CriarComentario)}
+      </section>
+    </>
+  )
+}
+
 interface PropsPerfil {
   loged: number;
   user: UserDTO;
   avals: AvaliacaoDTO[];
+  comentarios?: ComentarioDTO[]
 }
-const PerfilMain: React.FC<PropsPerfil> = ({ loged, user, avals }) => {
-
+const PerfilMain: React.FC<PropsPerfil> = ({ loged, user, avals, comentarios }) => {
   return (
-    <div className="w-dvw h-dvh flex justify-center bg-customWhite">
+    <div className="w-dvw flex justify-center bg-customWhite">
       <div className="w-5/6">
         <UserInfoSection user={user} loged={loged} />
 
@@ -105,7 +125,16 @@ const PerfilMain: React.FC<PropsPerfil> = ({ loged, user, avals }) => {
           </div>
         </div>
         <PostSection posts={avals} loged={loged} />
-      
+
+        {/*divisória e texto 'posts'*/}
+        <div className="h-1 bg-black mt-3"></div>
+        <div className="flex h-24">
+          <div className="w-1/12"></div>
+          <div className="content-center">
+            <h3 className="font-serif text-2xl">Comentários:</h3>
+          </div>
+        </div>
+        <ComentariosSection coments={comentarios} loged={loged} />
       </div>
     </div>
   );
