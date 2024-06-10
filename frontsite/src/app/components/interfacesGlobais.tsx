@@ -35,7 +35,11 @@ export interface ComentarioDTO {
     idAutor: number
     nomeAutor: ''
     idAlvo: number
+    nomeAlvo?: string
+    conteudoAlvo: string
     data: string
     conteudo: string
     foto: ''
+    idUserAlvo: number
+    fotoAlvo: string
 }
