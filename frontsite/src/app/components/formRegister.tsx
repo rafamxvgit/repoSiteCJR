@@ -3,12 +3,14 @@ import { Formik, Form, Field } from "formik";
 import * as yup from "yup";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 
-interface Vazia {}
+interface Vazia { }
 
 const FormRegister: React.FC<Vazia> = () => {
   const router = useRouter();
   const initialValues = { email: "", senha: "" };
+  const [linkImagem, setImagem] = useState("")
 
   const validation = yup.object({
     email: yup.string().email("invalid email adress").required("Required"),
@@ -16,15 +18,16 @@ const FormRegister: React.FC<Vazia> = () => {
     nome: yup.string().required("Required"),
     curso: yup.string().required("Required"),
     departamento: yup.string().required("Required"),
+    foto: yup.string().required("Required")
   });
 
   const submit = async (values: any) => {
+    console.log(values)
     const user = await axios.post("http://localhost:3005/user", values);
     if (user.status == 201) {
       return router.push(`/log/${user.data.id}/feed`);
     }
   };
-
   return (
     <>
       <Formik
@@ -67,6 +70,17 @@ const FormRegister: React.FC<Vazia> = () => {
             placeholder="Departamento:"
             className="mb-1 w-full h-10 mt-1 bg-lime-300 rounded-md p-6 outline-none border border-black focus:border-2 focus:border-black focus:shadow focus:shadow-black"
           ></Field>
+          <div className="my-1 w-full h-14 flex justify-between" onChange={(event) => {setImagem(event.target.value)}}>
+            <Field
+              id="foto"
+              type="text"
+              name="foto"
+              placeholder="foto"
+              className="mb-1 w-5/6 h-10 mt-1 bg-lime-300 rounded-md p-6 outline-none border border-black focus:border-2 focus:border-black focus:shadow focus:shadow-black"
+            ></Field>
+            <img src={linkImagem} alt="" className="h-full aspect-square rounded-full border-black outline-none border"/>
+          </div>
+
           <div className="w-full h-12 flex justify-center">
             <button
               className="h-full w-1/3 bg-lime-300 rounded-md border border-black hover:border-2 hover:border-black hover:shadow hover:shadow-black hover:translate-y-1 hover:bg-lime-400"
