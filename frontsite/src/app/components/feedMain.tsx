@@ -88,7 +88,13 @@ const FeedMain: React.FC<feedProps> = ({ todosProfessores }) => {
         </div>
         <div className="w-1/2 h-full flex font-serif">
           <div className="h-2/5 w-full self-center flex justify-end gap-6">
-            <button className="w-1/3 text-xl bg-lime-300 rounded-md text-center content-center border border-black hover:border-2 hover:border-black hover:shadow hover:shadow-black hover:bg-lime-400">
+            <button className="w-1/3 text-xl bg-lime-300 rounded-md text-center content-center border border-black hover:border-2 hover:border-black hover:shadow hover:shadow-black hover:bg-lime-400"
+            onClick={() => {
+              let reversedList: TeacherDTO[] = []
+              for (let i=1; i<(visibleTeachers.length+1); i++){
+                reversedList.push(visibleTeachers[visibleTeachers.length-i])
+              }
+              setVisTeachers(reversedList)}}>
               Ordenar
             </button>
           </div>
