@@ -35,7 +35,9 @@ const FormRegister: React.FC<Vazia> = () => {
         onSubmit={submit}
         validationSchema={validation}
       >
+
         <Form className="size-full flex flex-col justify-evenly font-serif">
+          <img src={linkImagem} alt="" className="w-40 self-center my-4 aspect-square rounded-full border-black outline-none border" />
           <Field
             id="nome"
             type="text"
@@ -70,15 +72,14 @@ const FormRegister: React.FC<Vazia> = () => {
             placeholder="Departamento:"
             className="mb-1 w-full h-10 mt-1 bg-lime-300 rounded-md p-6 outline-none border border-black focus:border-2 focus:border-black focus:shadow focus:shadow-black"
           ></Field>
-          <div className="my-1 w-full h-14 flex justify-between" onChange={(event) => {setImagem(event.target.value)}}>
-            <Field
-              id="foto"
-              type="text"
-              name="foto"
-              placeholder="foto"
-              className="mb-1 w-5/6 h-10 mt-1 bg-lime-300 rounded-md p-6 outline-none border border-black focus:border-2 focus:border-black focus:shadow focus:shadow-black"
-            ></Field>
-            <img src={linkImagem} alt="" className="h-full aspect-square rounded-full border-black outline-none border"/>
+          <div onChange={(event) => {setImagem(event.target.value)}}>
+          <Field
+            id="foto"
+            type="text"
+            name="foto"
+            placeholder="foto"
+            className="mb-1 w-full h-10 mt-1 bg-lime-300 rounded-md p-6 outline-none border border-black focus:border-2 focus:border-black focus:shadow focus:shadow-black"
+          ></Field>
           </div>
 
           <div className="w-full h-12 flex justify-center">
