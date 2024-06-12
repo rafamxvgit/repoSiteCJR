@@ -1,11 +1,6 @@
-import Image from "next/image";
-import Link from "next/link"
-import loginPage from "./loginPage/page";
+import { redirect } from "next/navigation";
 
 export default function Home() {
-  return (
-    <main>
-      <h1>main page</h1>
-    </main>
-  );
+  redirect("/noLog/feed")
+  return (<></>);
 }
