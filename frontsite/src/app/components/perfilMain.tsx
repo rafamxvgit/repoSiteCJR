@@ -60,8 +60,12 @@ const UserInfoSection: React.FC<PropsInfoSection> = ({ user, loged }) => {
           <ul className="list-disc text-lime-400">
             <li className="font-serif font-normal text-base">{user.nome}</li>
             <li className="font-serif font-normal text-base">{user.curso}</li>
-            <li className="font-serif font-normal text-base">{user.departamento}</li>
-            <li className="font-serif font-normal text-base">Bio: {user.bio}</li>
+            <li className="font-serif font-normal text-base">
+              {user.departamento}
+            </li>
+            <li className="font-serif font-normal text-base">
+              Bio: {user.bio}
+            </li>
           </ul>
         </div>
       </div>
@@ -74,7 +78,9 @@ interface PropsPostSection {
   loged: number;
 }
 const PostSection: React.FC<PropsPostSection> = ({ posts, loged }) => {
-  if (posts == undefined) { posts = [] }
+  if (posts == undefined) {
+    posts = [];
+  }
   const CriarPost = (obj: AvaliacaoDTO) => {
     return <Avaliacao dados={obj} loged={loged} />;
   };
@@ -87,13 +93,15 @@ const PostSection: React.FC<PropsPostSection> = ({ posts, loged }) => {
 
 interface PropsComSection {
   coments?: ComentarioDTO[];
-  loged: number
+  loged: number;
 }
 const ComentariosSection: React.FC<PropsComSection> = ({ coments, loged }) => {
-  if (coments == undefined) { coments = [] }
-  const CriarComentario = (obj: ComentarioDTO) => {
-    return <Comentario comentario={obj} loged={loged} />
+  if (coments == undefined) {
+    coments = [];
   }
+  const CriarComentario = (obj: ComentarioDTO) => {
+    return <Comentario comentario={obj} loged={loged} />;
+  };
 
   return (
     <>
@@ -101,16 +109,21 @@ const ComentariosSection: React.FC<PropsComSection> = ({ coments, loged }) => {
         {coments.map(CriarComentario)}
       </section>
     </>
-  )
-}
+  );
+};
 
 interface PropsPerfil {
   loged: number;
   user: UserDTO;
   avals: AvaliacaoDTO[];
-  comentarios?: ComentarioDTO[]
+  comentarios?: ComentarioDTO[];
 }
-const PerfilMain: React.FC<PropsPerfil> = ({ loged, user, avals, comentarios }) => {
+const PerfilMain: React.FC<PropsPerfil> = ({
+  loged,
+  user,
+  avals,
+  comentarios,
+}) => {
   return (
     <div className="w-dvw flex justify-center bg-customWhite">
       <div className="w-5/6">
