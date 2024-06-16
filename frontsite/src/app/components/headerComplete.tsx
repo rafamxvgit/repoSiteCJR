@@ -12,7 +12,7 @@ const HeaderComp: React.FC<HeaderProps> = ({ logado }) => {
                 <>
 
                     <div className="flex w-1/3 justify-center font-serif">
-                        <a href="./perfil">
+                        <a href={`/log/${logado}/perfil`}>
                             <button
                                 className="h-12 w-32 border border-black hover:bg-lime-400 hover:shadow hover:shadow-black hover:translate-y-1 rounded-md mr-2 ml-48"
                                 type="submit"
